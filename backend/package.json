@@ -10,17 +10,20 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore public/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "node src/setup/setup.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "16.3.1",
     "express": "^4.18.2",
+    "glob": "10.3.10",
     "lodash": "^4.17.21",
     "mongoose": "^8.0.3",
     "mongoose-autopopulate": "^1.1.0",
-    "node-cache": "^5.1.2"
+    "node-cache": "^5.1.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "3.0.1"
