@@ -6,19 +6,13 @@ const path = require('path');
 // import env from .env file
 require('dotenv').config({ path: '.env' });
 
-// define mongoose
-const mongoose = require('mongoose');
-mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.info('*****Connected to mongoose*****');
-  })
-  .catch((error) => {
-    console.info('*****Error when connected to mongoose*****', error);
-  });
+// init database
+const Database = require('./config/db');
+const db = new Database(process.env.DATABASE, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+db.connect().catch((err) => console.log('Error connecting to database: ', err));
 
 // inject and resolve all model files into app
 const modelFiles = globSync('./src/models/**/*.js');
