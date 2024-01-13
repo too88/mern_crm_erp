@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 const { v4 } = require('uuid');
+const mongoose = require('mongoose');
 
 const productCategorySchema = new mongoose.Schema({
   _id: {
@@ -14,13 +14,16 @@ const productCategorySchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  color: {
+    type: String,
+    trim: true,
+  },
   name: {
     type: String,
     require: true,
   },
   description: String,
   title: String,
-  tags: [String],
   created: {
     type: Date,
     default: Date.now,

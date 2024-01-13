@@ -27,12 +27,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
-  number: {
-    type: Number,
-    unique: true,
-  },
   title: String,
-  tags: [String],
   priceBeforeTax: {
     type: Number,
   },

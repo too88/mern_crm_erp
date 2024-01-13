@@ -9,7 +9,10 @@ require('dotenv').config({ path: '.env' });
 // define mongoose
 const mongoose = require('mongoose');
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.info('*****Connected to mongoose*****');
   })
