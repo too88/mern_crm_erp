@@ -8,10 +8,12 @@
   "description": "crm_erp_be",
   "main": "server",
   "scripts": {
-    "start": "node src/server.js",
+    "start:dev": "cross-env NODE_ENV=development node src/server.js",
+    "start:prod": "cross-env NODE_ENV=production node src/server.js",
     "dev": "nodemon src/server.js --ignore public/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "node src/setup/setup.js"
+    "setup:dev": "cross-env NODE_ENV=development node src/setup/setup.js",
+    "setup:prod": "cross-env NODE_ENV=production node src/setup/setup.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -19,6 +21,7 @@
     "dotenv": "16.3.1",
     "express": "^4.18.2",
     "glob": "10.3.10",
+    "module-alias": "^2.2.3",
     "lodash": "^4.17.21",
     "mongoose": "^8.0.3",
     "mongoose-autopopulate": "^1.1.0",
@@ -26,7 +29,12 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "3.0.1"
+  },
+  "_moduleAliases": {
+    "@": "src",
+    "@appModels": "src/models/appModels"
   },
   "author": "too_huynh",
   "license": "ISC"
