@@ -1,13 +1,15 @@
+require('module-alias/register');
 require('dotenv').config({ path: '.env' });
 const { globSync } = require('glob');
+const connectionModule = require('@/setup/connection');
 const fs = require('fs');
 const { v4 } = require('uuid');
 
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE);
+// connect database
+connectionModule.connection();
 
-const ProductCategory = require('../models/appModels/ProductCategory');
-const Product = require('../models/appModels/Product');
+const ProductCategory = require('@appModels/ProductCategory');
+const Product = require('@appModels/Product');
 
 async function execute() {
   try {
