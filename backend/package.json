@@ -11,7 +11,7 @@
     "start": "node src/server.js",
     "start:dev": "cross-env NODE_ENV=development node src/server.js",
     "start:prod": "cross-env NODE_ENV=production node src/server.js",
-    "dev": "nodemon src/server.js --ignore public/",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js --ignore public/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup:dev": "cross-env NODE_ENV=development node src/setup/setup.js",
     "setup:prod": "cross-env NODE_ENV=production node src/setup/setup.js"
@@ -35,7 +35,8 @@
   },
   "_moduleAliases": {
     "@": "src",
-    "@appModels": "src/models/appModels"
+    "@appModels": "src/models/appModels",
+    "@constants": "src/constants"
   },
   "author": "too_huynh",
   "license": "ISC"
