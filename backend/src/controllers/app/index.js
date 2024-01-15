@@ -30,6 +30,7 @@ const appController = () => {
 
   routeList.forEach(({ modelName, controllerName }) => {
     if (!hasValidateController.includes(controllerName)) {
+      // service layer 
       controllers[controllerName] = createCRUDService(modelName);
     }
   });
