@@ -8,10 +8,10 @@ const { v4 } = require("uuid");
 // connect database
 connectionModule.connection();
 
-const ProductCategory = require("@appModels/ProductCategory");
-const Product = require("@appModels/Product");
-const Company = require("@appModels/Company");
-const People = require("@appModels/People");
+const ProductCategory = require("@/models/app/ProductCategory");
+const Product = require("@/models/app/Product");
+const Company = require("@/models/app/Company");
+const People = require("@/models/app/People");
 
 async function execute() {
   try {
