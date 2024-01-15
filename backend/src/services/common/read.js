@@ -8,13 +8,13 @@ const read = async (Model, req, res) => {
     res.status(404).json({
       success: false,
       result: [],
-      message: 'No data for id: ' + req.params.id,
+      message: 'no data for id: ' + req.params.id,
     });
   } else {
     res.status(200).json({
       success: true,
       result: resultRef,
-      message: 'Data have id: ' + req.params.id,
+      message: 'data have id: ' + req.params.id,
     });
   }
 };
