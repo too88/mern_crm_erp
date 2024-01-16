@@ -26,16 +26,3 @@ services:
 
 #docker-compose -f mongo-compose.yml up --detach
 #docker-compose -f mongo-compose.yml down 
-#mongosh "mongodb://root:Abc123456789@localhost:27018" --username root --authenticationDatabase admin
-#sample data is here:
-#https://atlas-education.s3.amazonaws.com/sampledata.archive
-
-#access to mongo-container's terminal
-#cd C:\Users\sunli\Documents\code\YoutubeChannel\2023\MongoDBTutorialsForBeginners2023\myapp
-#docker exec -it mongo-container bash
-#Connect inside container:
-#mongosh "mongodb://root:Abc123456789@localhost:27017" --username root --authenticationDatabase admin
-#use sample_mflix
-#Download and restore data
-#curl https://atlas-education.s3.amazonaws.com/sampledata.archive -o sampledata.archive
-#mongorestore --username root --password Abc123456789 --authenticationDatabase admin --archive=./sampledata.archive

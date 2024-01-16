@@ -19,11 +19,10 @@
 
 ### How to deploy
 
-
 1. run seeder (generate data)
 
-   > npm run setup:dev 
+   > npm run setup:prod 
 
-1. run API
+1. deploy on render cloud
 
-   > npm start dev # API running at 8888
+   > https://dashboard.render.com/web/srv-cmiun6en7f5s73a6jp70/deploys/dep-cmiun76n7f5s73a6jpe0
