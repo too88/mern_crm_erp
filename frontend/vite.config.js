@@ -11,10 +11,6 @@ export default ({ mode }) => {
       : "http://localhost:8888";
 
   const config = {
-    build: {
-      outDir: 'dist',
-      assetsDir: './assets',
-    },
     plugins: [react()],
     resolve: {
       base: "/",
