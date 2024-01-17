@@ -4,12 +4,11 @@ import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const { Sider } = Layout;
-
 export default function Navigation () {
   return <Sidebar collapsible={false} />;
 };
 
+//TODO: complete Sidebar
 function Sidebar({ collapsible }) {
   let location = useLocation();
 
@@ -55,7 +54,7 @@ function Sidebar({ collapsible }) {
   }, [location, currentPath]);
 
   return (
-    <Sider
+    <Layout.Sider
       collapsible={collapsible}
       collapsed={collapsible ? isNavMenuClose : collapsible}
       onCollapse={onCollapse}
@@ -80,6 +79,6 @@ function Sidebar({ collapsible }) {
           border: "none",
         }}
       />
-    </Sider>
+    </Layout.Sider>
   );
 }

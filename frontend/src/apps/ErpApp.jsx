@@ -4,8 +4,6 @@ import HeaderContent from "./Header";
 import AppRouter from "@/router/AppRouter";
 import { useAppContext } from "@/context/appContext";
 
-const { Content } = Layout;
-
 export default function ErpApp() {
   const { state: stateApp } = useAppContext();
   const { isNavMenuClose } = stateApp;
@@ -17,7 +15,7 @@ export default function ErpApp() {
       <Layout style={{ marginLeft: isNavMenuClose ? 100 : 220 }}>
         <HeaderContent />
 
-        <Content
+        <Layout.Content
           style={{
             margin: "40px auto 30px",
             overflow: "initial",
@@ -27,7 +25,7 @@ export default function ErpApp() {
           }}
         >
           <AppRouter />
-        </Content>
+        </Layout.Content>
       </Layout>
     </Layout>
   );

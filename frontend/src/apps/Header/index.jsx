@@ -2,8 +2,7 @@ import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Layout } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
-const { Header } = Layout;
-
+//TODO: complete header bar
 export default function HeaderContent() {
   const ProfileDropdown = () => {
     <div>
@@ -46,7 +45,7 @@ export default function HeaderContent() {
   ];
 
   return (
-    <Header
+    <Layout.Header
       style={{
         padding: "20px",
         background: "#f9fafc",
@@ -64,6 +63,6 @@ export default function HeaderContent() {
       >
         <Avatar></Avatar>
       </Dropdown>
-    </Header>
+    </Layout.Header>
   );
 }
