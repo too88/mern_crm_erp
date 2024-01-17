@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from '@/redux/store'
 import PageLoader from "@/components/PageLoader"
+import './style/app.css'
 
 const MernOs = lazy(() => import("./apps/MernOs"))
 
