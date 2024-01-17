@@ -1,3 +1,5 @@
+import CrudModule from "@/modules/CrudModule";
+
 export default function Company() {
-  return <div>Company</div>;
+  return <CrudModule />;
 }
