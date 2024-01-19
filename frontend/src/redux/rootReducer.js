@@ -1,5 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({});
+import { reducer as crudReducer } from "./crudRedux";
+
+const rootReducer = combineReducers({
+  crud: crudReducer,
+});
 
 export default rootReducer;
