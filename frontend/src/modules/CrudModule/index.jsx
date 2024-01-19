@@ -1,8 +1,11 @@
 import DataTable from "@/components/DataTable";
 import SearchItem from "@/components/SearchItem";
 import CrudLayout from "@/layout/CrudLayout";
+import { crud } from "@/redux/crudRedux/action";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
+import { useLayoutEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const HeaderPanel = ({}) => {
   return (
@@ -17,10 +20,16 @@ const HeaderPanel = ({}) => {
   );
 };
 
-export default function CrudModule({}) {
+export default function CrudModule({ config }) {
+  const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    dispatch(crud.resetState());
+  }, []);
+
   return (
     <CrudLayout headerPanel={<HeaderPanel />}>
-      <DataTable />
+      <DataTable config={config}/>
     </CrudLayout>
   );
 }
