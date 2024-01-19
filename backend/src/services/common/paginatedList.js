@@ -3,7 +3,7 @@ const constants = require('@/constants/common');
 
 const paginatedList = async (Model, req, res) => {
   const page = req.query.page || constants.PAGINATE_PAGE_DEFAULT;
-  const limit = parseInt(req.query.items) || constants.PAGINATE_LIMIT;
+  const limit = parseInt(req.query.items) || constants.PAGINATE_PAGESIZE;
   const skip = page * limit - limit;
 
   const resultRef = Model.find({ removed: false })
