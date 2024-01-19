@@ -12,7 +12,7 @@ export default function ErpApp() {
     <Layout hasSider>
       <Navigation />
 
-      <Layout style={{ marginLeft: isNavMenuClose ? 100 : 220 }}>
+      <Layout style={{ marginLeft: isNavMenuClose ? 100 : 192, background: "#f9fafc" }}>
         <HeaderContent />
 
         <Layout.Content

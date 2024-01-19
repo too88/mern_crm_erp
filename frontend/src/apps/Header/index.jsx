@@ -4,13 +4,24 @@ import { Link, useNavigate } from "react-router-dom";
 
 //TODO: complete header bar
 export default function HeaderContent() {
+  //TODO: update auth middleware then finish profile information
   const ProfileDropdown = () => {
-    <div>
-      <Avatar></Avatar>
-    </div>;
+    return (
+      <div className="profileDropdown">
+        <Avatar
+          size="large"
+          className="last"
+          style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+        >
+          Too
+        </Avatar>
+        <div className="profileDropdownInfo">
+          <p>Too Huynh</p>
+          <p>tuhuynh1902@gmail.com</p>
+        </div>
+      </div>
+    );
   };
-
-  const DropdownMenu = () => {};
 
   const items = [
     {
@@ -25,7 +36,7 @@ export default function HeaderContent() {
       key: "settingProfile",
       label: (
         <Link to={"/profile"}>
-          <DropdownMenu />
+          <span>Profile</span>
         </Link>
       ),
     },
@@ -56,12 +67,22 @@ export default function HeaderContent() {
       }}
     >
       <Dropdown
-        menu={items}
+        menu={{ items }}
         trigger={["click"]}
         placement="bottomRight"
         stye={{ width: "280px", float: "right" }}
       >
-        <Avatar></Avatar>
+        {/* TODO: build photo profile after that update avatar's src */}
+        <Avatar
+          className="last"
+          style={{
+            color: "#f56a00",
+            backgroundColor: "#fde3cf",
+            float: "right",
+            cursor: "pointer",
+          }}
+          size="large"
+        >Too</Avatar>
       </Dropdown>
     </Layout.Header>
   );
