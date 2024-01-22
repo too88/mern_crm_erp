@@ -1,6 +1,16 @@
 import * as reduxConstants from "@/constants/common";
 
+const INITIAL_KEY_STATE = {
+  result: null,
+  current: null,
+  isLoading: false,
+  isSuccess: false,
+};
+
 const INITIAL_STATE = {
+  current: {
+    result: null,
+  },
   list: {
     result: {
       items: [],
@@ -13,12 +23,22 @@ const INITIAL_STATE = {
     isLoading: false,
     isSuccess: false,
   },
+  create: INITIAL_KEY_STATE,
 };
 
 const crudReducer = (state = INITIAL_STATE, action) => {
   const { payload, keyState } = action;
 
   switch (action.type) {
+    case reduxConstants.RESET_STATE:
+      return INITIAL_STATE;
+    case reduxConstants.CURRENT_ITEM:
+      return {
+        ...state,
+        current: {
+          result: payload,
+        },
+      };
     case reduxConstants.REQUEST_LOADING:
       return {
         ...state,
@@ -45,7 +65,6 @@ const crudReducer = (state = INITIAL_STATE, action) => {
           isSuccess: false,
         },
       };
-
     default:
       return state;
   }

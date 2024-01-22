@@ -5,6 +5,15 @@ axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.withCredentials = true;
 
 const request = {
+  create: async ({ entity, jsonData }) => {
+    try {
+      const response = await axios.post(entity + "/create", jsonData);
+
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
   list: async ({ entity, options = {} }) => {
     try {
       let query = "?";
