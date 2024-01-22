@@ -1,3 +1,4 @@
+import CreateForm from "@/components/CreateForm";
 import DataTable from "@/components/DataTable";
 import SearchItem from "@/components/SearchItem";
 import CrudLayout from "@/layout/CrudLayout";
@@ -11,16 +12,16 @@ const HeaderPanel = ({}) => {
   return (
     <Row gutter={8}>
       <Col className="gutter-row" span={21}>
-        <SearchItem />
+        {/* <SearchItem /> */}
       </Col>
       <Col className="gutter-row" span={3}>
-        <Button block icon={<PlusOutlined />} onclick={() => alert("addNewItem")}></Button>
+        <Button block icon={<PlusOutlined />} onClick={() => alert("addNewItem")}></Button>
       </Col>
     </Row>
   );
 };
 
-export default function CrudModule({ config }) {
+export default function CrudModule({ config, createForm }) {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
@@ -28,8 +29,12 @@ export default function CrudModule({ config }) {
   }, []);
 
   return (
-    <CrudLayout headerPanel={<HeaderPanel />}>
-      <DataTable config={config}/>
+    <CrudLayout
+      config={config}
+      sidePanelBottomContent={<CreateForm config={config} formElements={createForm} />}
+      headerPanel={<HeaderPanel />}
+    >
+      <DataTable config={config} />
     </CrudLayout>
   );
 }

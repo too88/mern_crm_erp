@@ -19,10 +19,10 @@ const ContentBox = ({ children }) => {
   );
 };
 
-export default function CrudLayout({ headerPanel, children }) {
+export default function CrudLayout({ config, headerPanel, sidePanelBottomContent, children }) {
   return (
     <DefaultLayout>
-      <DrawerSidePanel headerPanel={headerPanel} />
+      <DrawerSidePanel config={config} bottomContent={sidePanelBottomContent} headerPanel={headerPanel} />
       <ContentBox>{children}</ContentBox>
     </DefaultLayout>
   );

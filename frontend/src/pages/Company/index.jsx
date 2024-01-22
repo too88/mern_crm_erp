@@ -1,5 +1,6 @@
 import CrudModule from "@/modules/CrudModule";
 import { fields } from "./config";
+import DynamicForm from "@/form/DynamicForm";
 
 const COMPANY = "company";
 
@@ -23,5 +24,5 @@ export default function Company() {
     fields,
   };
 
-  return <CrudModule config={config} />;
+  return <CrudModule createForm={<DynamicForm fields={fields} />} config={config} />;
 }

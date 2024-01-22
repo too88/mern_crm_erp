@@ -7,7 +7,12 @@ export default function DynamicForm({ fields }) {
       {Object.keys(fields).map((key) => {
         let field = fields[key];
 
-        return <FormElement key={key} field={field} />;
+        if (!field.disableForForm) {
+          field.name = key;
+          if (!field.label) field.label = key;
+
+          return <FormElement key={key} field={field} />;
+        }
       })}
     </>
   );
@@ -21,36 +26,36 @@ function FormElement({ field }) {
     email: <Input />,
     phone: <Input />,
     number: <InputNumber />,
-    currency: <InputNumber />,
-    textarea: <Input.TextArea />,
-    boolean: <Switch />,
-    date: <DatePicker />,
-    select: (
-      <Select>
-        <Select.Option></Select.Option>
-      </Select>
-    ),
-    color: (
-      <Select>
-        <Select.Option></Select.Option>
-      </Select>
-    ),
-    tag: (
-      <Select>
-        <Select.Option></Select.Option>
-      </Select>
-    ),
-    array: (
-      <Select>
-        <Select.Option></Select.Option>
-      </Select>
-    ),
-    country: (
-      <Select>
-        <Select.Option></Select.Option>
-      </Select>
-    ),
-    search: <AutoCompleteAsync />,
+    // currency: <InputNumber />,
+    // textarea: <Input.TextArea />,
+    // boolean: <Switch />,
+    // date: <DatePicker />,
+    // select: (
+    //   <Select>
+    //     <Select.Option></Select.Option>
+    //   </Select>
+    // ),
+    // color: (
+    //   <Select>
+    //     <Select.Option></Select.Option>
+    //   </Select>
+    // ),
+    // tag: (
+    //   <Select>
+    //     <Select.Option></Select.Option>
+    //   </Select>
+    // ),
+    // array: (
+    //   <Select>
+    //     <Select.Option></Select.Option>
+    //   </Select>
+    // ),
+    // country: (
+    //   <Select>
+    //     <Select.Option></Select.Option>
+    //   </Select>
+    // ),
+    // search: <AutoCompleteAsync />,
   };
 
   const ruleTypes = {
@@ -64,7 +69,21 @@ function FormElement({ field }) {
   };
 
   // TODO: should get field's type from upper prop
-  const renderComponent = componentAggregation[""] ?? componentAggregation["string"];
+  const renderComponent = componentAggregation[field] ?? componentAggregation["string"];
 
-  return <Form.Item>{renderComponent}</Form.Item>;
+  return (
+    <Form.Item
+      label={field.label}
+      name={field.name}
+      rules={[
+        {
+          required: field.required || false,
+          type: ruleTypes[field.type] ?? "any",
+        },
+      ]}
+      valuePropName={field.type === "boolean" ? "checked" : "value"}
+    >
+      {renderComponent}
+    </Form.Item>
+  );
 }
