@@ -3,11 +3,12 @@ import { crud } from "@/redux/crudRedux/action";
 import { selectListItems } from "@/redux/crudRedux/selector";
 import dataForTable from "@/utils/dataStructure";
 import { PageHeader } from "@ant-design/pro-layout";
-import { Button, Table } from "antd";
+import { Button, Dropdown, Table } from "antd";
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generate as uniqueId } from "shortid";
 import * as constants from "@/constants/common";
+import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 
 function AddNewItem({}) {
   const { crudContextAction } = useCrudContext();
@@ -27,13 +28,29 @@ function AddNewItem({}) {
 
 export default function DataTable({ config }) {
   let { entity, TABLE_NAME, fields, dataTableColumns } = config;
-
   const dispatch = useDispatch();
+  const { crudContextAction } = useCrudContext();
+  const { panel, collapsedBox, readBox } = crudContextAction;
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
 
   const { pagination, items: dataSource } = listResult;
 
-  const handleDataTableLoad = useCallback(() => {
+  const items = [
+    {
+      label: "Show",
+      key: "read",
+      icon: <EyeOutlined />,
+    },
+  ];
+
+  const handleRead = (record) => {
+    dispatch(crud.currentItem({ data: record }));
+    panel.open();
+    collapsedBox.open();
+    readBox.open();
+  };
+
+  const handleDataTableLoad = useCallback((pagination) => {
     const options = {
       page: pagination.current || constants.PAGINATE_PAGE_DEFAULT,
       items: pagination.pageSize || constants.PAGINATE_PAGESIZE,
@@ -58,6 +75,37 @@ export default function DataTable({ config }) {
     dispatchColumns = [...dataTableColumns];
   }
 
+  dataTableColumns = [
+    ...dispatchColumns,
+    {
+      title: "",
+      key: "action",
+      fixed: "right",
+      render: (_, record) => (
+        <Dropdown
+          menu={{
+            items,
+            onClick: ({ key }) => {
+              switch (key) {
+                case "read":
+                  handleRead(record);
+                  break;
+                default:
+                  break;
+              }
+            },
+          }}
+          trigger={['click']}
+        >
+          <EllipsisOutlined
+            style={{ cursor: "pointer", fontSize: "24px" }}
+            onClick={(e) => e.preventDefault()}
+          />
+        </Dropdown>
+      ),
+    },
+  ];
+
   return (
     <>
       <PageHeader
@@ -71,7 +119,7 @@ export default function DataTable({ config }) {
       ></PageHeader>
 
       <Table
-        columns={dispatchColumns}
+        columns={dataTableColumns}
         rowKey={(item) => item._id}
         dataSource={dataSource}
         pagination={pagination}

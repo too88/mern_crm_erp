@@ -23,7 +23,18 @@ const contextAction = (dispatch) => {
       collapse: () => {
         dispatch({ type: crudConstant.COLLAPSE_PANEL });
       },
-    }
+    },
+    readBox: {
+      open: () => {
+        dispatch({ type: crudConstant.OPEN_READ_BOX });
+      },
+      close: () => {
+        dispatch({ type: crudConstant.CLOSE_READ_BOX });
+      },
+      collapse: () => {
+        dispatch({ type: crudConstant.COLLAPSE_READ_BOX });
+      },
+    },
   };
 };
 

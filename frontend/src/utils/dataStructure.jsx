@@ -1,3 +1,18 @@
+export const dataForRead = ({ fields }) => {
+  let columns = [];
+
+  Object.keys(fields).forEach((key) => {
+    let field = fields[key];
+
+    columns.push({
+      title: field.label ?? key,
+      dataIndex: field.dataIndex ? field.dataIndex.join(".") : key,
+    });
+  });
+
+  return columns;
+};
+
 export default function dataForTable({ fields }) {
   let columns = [];
 
@@ -9,7 +24,7 @@ export default function dataForTable({ fields }) {
 
     const defaultComponent = {
       title: field.label ? field.label : key,
-      dataIndex: keyIndex
+      dataIndex: keyIndex,
     };
 
     const type = field.type;

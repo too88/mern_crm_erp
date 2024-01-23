@@ -14,6 +14,15 @@ const request = {
       return console.log(error);
     }
   },
+  update: async ({ entity, id, jsonData }) => {
+    try {
+      const response = await axios.post(entity + "/update" + id, jsonData);
+
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
   list: async ({ entity, options = {} }) => {
     try {
       let query = "?";

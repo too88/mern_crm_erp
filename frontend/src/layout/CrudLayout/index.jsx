@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 import DefaultLayout from "../DefaultLayout";
 import DrawerSidePanel from "@/components/DrawerSidePanel";
+import { useCrudContext } from "@/context/crudContext";
 
-//TODO: handle content box
 const ContentBox = ({ children }) => {
   return (
     <Layout.Content
@@ -22,8 +22,8 @@ const ContentBox = ({ children }) => {
 export default function CrudLayout({
   config,
   headerPanel,
-  sidePanelBottomContent,
   sidePanelTopContent,
+  sidePanelBottomContent,
   children,
 }) {
   return (

@@ -24,5 +24,11 @@ export default function Company() {
     fields,
   };
 
-  return <CrudModule createForm={<DynamicForm fields={fields} />} config={config} />;
+  return (
+    <CrudModule
+      updateForm={<DynamicForm fields={fields} />}
+      createForm={<DynamicForm fields={fields} />}
+      config={config}
+    />
+  );
 }

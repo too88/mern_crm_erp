@@ -25,10 +25,11 @@ export default function CreateForm({ config, formElements }) {
 
   useEffect(() => {
     if (isSuccess) {
+      // TODO: what is readBox.open()
       collapsedBox.open();
       panel.open();
       form.resetFields();
-      dispatch(crud.resetAction({ actionType: "create" }));
+      // dispatch(crud.resetAction({ actionType: "create" }));
       dispatch(crud.list({ entity }));
     }
   }, [isSuccess]);
