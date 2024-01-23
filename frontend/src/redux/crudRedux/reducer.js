@@ -23,7 +23,9 @@ const INITIAL_STATE = {
     isLoading: false,
     isSuccess: false,
   },
+  read: INITIAL_KEY_STATE,
   create: INITIAL_KEY_STATE,
+  update: INITIAL_KEY_STATE,
 };
 
 const crudReducer = (state = INITIAL_STATE, action) => {
@@ -63,6 +65,21 @@ const crudReducer = (state = INITIAL_STATE, action) => {
           ...state[keyState],
           isLoading: false,
           isSuccess: false,
+        },
+      };
+    case reduxConstants.CURRENT_ACTION:
+      return {
+        ...state,
+        [keyState]: {
+          ...INITIAL_KEY_STATE,
+          current: payload,
+        },
+      };
+    case reduxConstants.RESET_ACTION:
+      return {
+        ...state,
+        [keyState]: {
+          ...INITIAL_STATE[keyState],
         },
       };
     default:

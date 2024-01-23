@@ -9,6 +9,32 @@ export const crud = {
         type: reduxConstants.RESET_STATE,
       });
     },
+  resetAction:
+    ({ actionType }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.RESET_ACTION,
+        keyState: actionType,
+        payload: null,
+      });
+    },
+  currentItem:
+    ({ data }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.CURRENT_ITEM,
+        payload: { ...data },
+      });
+    },
+  currentAction:
+    ({ actionType, data }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.CURRENT_ACTION,
+        keyState: actionType,
+        payload: { ...data },
+      });
+    },
   list:
     ({
       entity,
@@ -76,6 +102,37 @@ export const crud = {
         dispatch({
           type: reduxConstants.REQUEST_FAILED,
           keyState: "create",
+          payload: null,
+        });
+      }
+    },
+  update:
+    ({ entity, id, jsonData }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.REQUEST_LOADING,
+        keyState: "update",
+        payload: null,
+      });
+      let data = null;
+
+      data = await request.update({ entity, id, jsonData });
+
+      if (data.success) {
+        dispatch({
+          type: reduxConstants.REQUEST_SUCCESS,
+          key: "update",
+          payload: data.result,
+        });
+
+        dispatch({
+          type: reduxConstants.CURRENT_ITEM,
+          payload: data.result,
+        });
+      } else {
+        dispatch({
+          type: reduxConstants.REQUEST_FAILED,
+          keyState: "update",
           payload: null,
         });
       }
