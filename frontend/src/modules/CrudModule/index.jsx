@@ -21,7 +21,7 @@ const HeaderPanel = ({}) => {
   );
 };
 
-export default function CrudModule({ config, createForm }) {
+export default function CrudModule({ config, createForm, updateForm }) {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
@@ -31,8 +31,9 @@ export default function CrudModule({ config, createForm }) {
   return (
     <CrudLayout
       config={config}
-      sidePanelBottomContent={<CreateForm config={config} formElements={createForm} />}
       headerPanel={<HeaderPanel />}
+      sidePanelTopContent={<CreateForm config={config} formElements={updateForm} />}
+      sidePanelBottomContent={<CreateForm config={config} formElements={createForm} />}
     >
       <DataTable config={config} />
     </CrudLayout>

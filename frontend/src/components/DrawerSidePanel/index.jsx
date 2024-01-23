@@ -3,10 +3,11 @@ import { Drawer } from "antd";
 import { useEffect, useState } from "react";
 import CollapseBox from "../CollapseBox";
 
-export default function DrawerSidePanel({ config, bottomContent, headerPanel }) {
+export default function DrawerSidePanel({ config, headerPanel, topContent, bottomContent }) {
+  const { ADD_NEW_ENTITY } = config;
   const { state, crudContextAction } = useCrudContext();
-  const { isPanelClose } = state;
-  const { panel } = crudContextAction;
+  const { isPanelClose, isBoxCollapsed } = state;
+  const { panel, collapsedBox } = crudContextAction;
   const [opacitySider, setOpacitySider] = useState(0);
   const [paddingTopSider, setPaddingTopSider] = useState("20px");
 
@@ -29,6 +30,10 @@ export default function DrawerSidePanel({ config, bottomContent, headerPanel }) 
     panel.collapse();
   };
 
+  const collapsePanelBox = () => {
+    collapsedBox.collapse();
+  };
+
   return (
     <Drawer
       title={config.PANEL_TITLE}
@@ -42,7 +47,13 @@ export default function DrawerSidePanel({ config, bottomContent, headerPanel }) 
         style={{ opacity: opacitySider, paddingTop: paddingTopSider }}
       >
         {headerPanel}
-        <CollapseBox bottomContent={bottomContent} />
+        <CollapseBox
+          buttonTitle={ADD_NEW_ENTITY}
+          isCollapsed={isBoxCollapsed}
+          onCollapse={collapsePanelBox}
+          topContent={topContent}
+          bottomContent={bottomContent}
+        />
       </div>
     </Drawer>
   );
