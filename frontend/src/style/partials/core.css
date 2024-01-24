@@ -193,3 +193,11 @@ html, body, #root, .ant-layout {
     margin: 70px auto;
   }
 }
+
+.d-flex {
+  display: flex;
+}
+
+.pr-1 {
+  padding-right: 1em;
+}
