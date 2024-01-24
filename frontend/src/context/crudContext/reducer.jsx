@@ -1,7 +1,7 @@
 import * as crudConstant from "@/constants/common";
 
 export const initialState = {
-  isModelOpen: false,
+  isModalOpen: false,
   isPanelClose: true,
   isBoxCollapsed: false,
   isReadBoxOpen: false,
@@ -76,6 +76,18 @@ export function contextReducer(state, action) {
       return {
         ...state,
         isEditBoxOpen: false,
+      };
+
+    // modal
+    case crudConstant.OPEN_MODAL:
+      return {
+        ...state,
+        isModalOpen: true,
+      };
+    case crudConstant.CLOSE_MODAL:
+      return {
+        ...state,
+        isModalOpen: false,
       };
 
     default:

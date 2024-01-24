@@ -5,17 +5,17 @@ const contextAction = (dispatch) => {
     collapsedBox: {
       open: () => {
         console.log("OPEN_BOX");
-        
+
         dispatch({ type: crudConstant.OPEN_BOX });
       },
       close: () => {
         console.log("CLOSE_BOX");
-        
+
         dispatch({ type: crudConstant.CLOSE_BOX });
       },
       collapse: () => {
         console.log("COLLAPSE_BOX");
-        
+
         dispatch({ type: crudConstant.COLLAPSE_BOX });
       },
     },
@@ -63,6 +63,18 @@ const contextAction = (dispatch) => {
         console.log("CLOSE_EDIT_BOX");
 
         dispatch({ type: crudConstant.CLOSE_EDIT_BOX });
+      },
+    },
+    modal: {
+      open: () => {
+        console.log("OPEN_MODAL");
+
+        dispatch({ type: crudConstant.OPEN_MODAL });
+      },
+      close: () => {
+        console.log("CLOSE_MODAL");
+
+        dispatch({ type: crudConstant.CLOSE_MODAL });
       },
     },
   };
