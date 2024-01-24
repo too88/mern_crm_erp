@@ -1,7 +1,6 @@
 import { Layout } from "antd";
 import DefaultLayout from "../DefaultLayout";
 import DrawerSidePanel from "@/components/DrawerSidePanel";
-import { useCrudContext } from "@/context/crudContext";
 
 const ContentBox = ({ children }) => {
   return (

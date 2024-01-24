@@ -26,6 +26,7 @@ const INITIAL_STATE = {
   read: INITIAL_KEY_STATE,
   create: INITIAL_KEY_STATE,
   update: INITIAL_KEY_STATE,
+  delete: INITIAL_KEY_STATE,
 };
 
 const crudReducer = (state = INITIAL_STATE, action) => {

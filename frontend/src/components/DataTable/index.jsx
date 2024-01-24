@@ -8,9 +8,10 @@ import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generate as uniqueId } from "shortid";
 import * as constants from "@/constants/common";
-import { EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 
-function AddNewItem({}) {
+function AddNewItem({ config }) {
+  const { ADD_NEW_ENTITY } = config;
   const { crudContextAction } = useCrudContext();
   const { collapsedBox, panel } = crudContextAction;
 
@@ -21,7 +22,7 @@ function AddNewItem({}) {
 
   return (
     <Button onClick={handleClick} type="primary">
-      Button
+      {ADD_NEW_ENTITY}
     </Button>
   );
 }
@@ -30,7 +31,7 @@ export default function DataTable({ config }) {
   let { entity, TABLE_NAME, fields, dataTableColumns } = config;
   const dispatch = useDispatch();
   const { crudContextAction } = useCrudContext();
-  const { panel, collapsedBox, readBox } = crudContextAction;
+  const { panel, collapsedBox, readBox, modal } = crudContextAction;
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
 
   const { pagination, items: dataSource } = listResult;
@@ -41,7 +42,17 @@ export default function DataTable({ config }) {
       key: "read",
       icon: <EyeOutlined />,
     },
+    {
+      label: "Delete",
+      key: "delete",
+      icon: <DeleteOutlined />,
+    },
   ];
+
+  const handleDelete = (record) => {
+    dispatch(crud.currentAction({ actionType: "delete", data: record }));
+    modal.open();
+  };
 
   const handleRead = (record) => {
     dispatch(crud.currentItem({ data: record }));
@@ -49,24 +60,6 @@ export default function DataTable({ config }) {
     collapsedBox.open();
     readBox.open();
   };
-
-  const handleDataTableLoad = useCallback((pagination) => {
-    const options = {
-      page: pagination.current || constants.PAGINATE_PAGE_DEFAULT,
-      items: pagination.pageSize || constants.PAGINATE_PAGESIZE,
-    };
-    dispatch(crud.list({ entity, options }));
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    dispatch(crud.list({ entity }));
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
 
   let dispatchColumns = [];
   if (fields) {
@@ -90,12 +83,15 @@ export default function DataTable({ config }) {
                 case "read":
                   handleRead(record);
                   break;
+                case "delete":
+                  handleDelete(record);
+                  break;
                 default:
                   break;
               }
             },
           }}
-          trigger={['click']}
+          trigger={["click"]}
         >
           <EllipsisOutlined
             style={{ cursor: "pointer", fontSize: "24px" }}
@@ -106,6 +102,24 @@ export default function DataTable({ config }) {
     },
   ];
 
+  const handleDataTableLoad = useCallback((pagination) => {
+    const options = {
+      page: pagination.current || constants.PAGINATE_PAGE_DEFAULT,
+      items: pagination.pageSize || constants.PAGINATE_PAGESIZE,
+    };
+    dispatch(crud.list({ entity, options }));
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    dispatch(crud.list({ entity }));
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
   return (
     <>
       <PageHeader
@@ -115,7 +129,7 @@ export default function DataTable({ config }) {
         onBack={() => window.history.back()}
         title={TABLE_NAME}
         ghost={false}
-        extra={[<AddNewItem key={uniqueId()} />]}
+        extra={[<AddNewItem key={uniqueId()} config={config}/>]}
       ></PageHeader>
 
       <Table

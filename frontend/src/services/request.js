@@ -23,6 +23,15 @@ const request = {
       return console.log(error);
     }
   },
+  delete: async ({ entity, id }) => {
+    try {
+      const response = await axios.delete(entity + "/delete/" + id);
+
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
   list: async ({ entity, options = {} }) => {
     try {
       let query = "?";

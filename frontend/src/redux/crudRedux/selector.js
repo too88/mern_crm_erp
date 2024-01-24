@@ -6,3 +6,4 @@ export const selectCreatedItem = createSelector([selectCrud], (crud) => crud.cre
 export const selectListItems = createSelector([selectCrud], (crud) => crud.list);
 export const selectCurrentItem = createSelector([selectCrud], (crud) => crud.current);
 export const selectUpdatedItem = createSelector([selectCrud], (crud) => crud.update);
+export const selectDeletedItem = createSelector([selectCrud], (crud) => crud.delete);

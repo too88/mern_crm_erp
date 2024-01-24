@@ -7,6 +7,8 @@ const COMPANY = "company";
 export default function Company() {
   const entity = COMPANY;
 
+  const deleteModalLabels = ["name"];
+
   const labels = {
     PANEL_TITLE: "Company",
     TABLE_NAME: "Company List",
@@ -22,6 +24,7 @@ export default function Company() {
   const config = {
     ...configPage,
     fields,
+    deleteModalLabels,
   };
 
   return (

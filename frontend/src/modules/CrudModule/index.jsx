@@ -1,5 +1,6 @@
 import CreateForm from "@/components/CreateForm";
 import DataTable from "@/components/DataTable";
+import DeleteModal from "@/components/DeleteModal";
 import ReadItem from "@/components/ReadItem";
 import SearchItem from "@/components/SearchItem";
 import UpdateForm from "@/components/UpdateForm";
@@ -35,9 +36,11 @@ const HeaderPanel = ({ config }) => {
 function SidePanelTopContent({ config, formElements }) {
   const dispatch = useDispatch();
   const { crudContextAction, state } = useCrudContext();
+  const { deleteModalLabels } = config;
   const { editBox } = crudContextAction;
   const { isReadBoxOpen, isEditBoxOpen } = state;
   const { result: currentItem } = useSelector(selectCurrentItem);
+  const [labels, setLabels] = useState("");
 
   const editItem = () => {
     dispatch(crud.currentAction({ actionType: "update", data: currentItem }));
@@ -46,11 +49,19 @@ function SidePanelTopContent({ config, formElements }) {
 
   const show = isReadBoxOpen || isEditBoxOpen ? { opacity: 1 } : { opacity: 0 };
 
+  useEffect(() => {
+    if (currentItem) {
+      const currentLabels = deleteModalLabels.map((x) => currentItem[x]).join(" ");
+
+      setLabels(currentLabels);
+    }
+  }, [currentItem]);
+
   return (
     <>
       <Row style={show} gutter={(24, 24)}>
         <Col span={10}>
-          <p style={{ marginBottom: "10px" }}>{currentItem['name']}</p>
+          <p style={{ marginBottom: "10px" }}>{labels}</p>
         </Col>
 
         <Col span={14}>
@@ -94,6 +105,7 @@ export default function CrudModule({ config, createForm, updateForm }) {
       sidePanelBottomContent={<CreateForm config={config} formElements={createForm} />}
     >
       <DataTable config={config} />
+      <DeleteModal config={config} />
     </CrudLayout>
   );
 }

@@ -90,7 +90,7 @@ export const crud = {
       if (data.success) {
         dispatch({
           type: reduxConstants.REQUEST_SUCCESS,
-          key: "create",
+          keyState: "create",
           payload: data.result,
         });
 
@@ -121,7 +121,7 @@ export const crud = {
       if (data.success) {
         dispatch({
           type: reduxConstants.REQUEST_SUCCESS,
-          key: "update",
+          keyState: "update",
           payload: data.result,
         });
 
@@ -133,6 +133,36 @@ export const crud = {
         dispatch({
           type: reduxConstants.REQUEST_FAILED,
           keyState: "update",
+          payload: null,
+        });
+      }
+    },
+  delete:
+    ({ entity, id }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.REQUEST_LOADING,
+        keyState: "delete",
+        payload: null,
+      });
+
+      let data = await request.delete({ entity, id });
+
+      if (data.success) {
+        dispatch({
+          type: reduxConstants.REQUEST_SUCCESS,
+          keyState: "delete",
+          payload: data.result,
+        });
+
+        dispatch({
+          type: reduxConstants.RESET_ACTION,
+          keyState: "delete",
+        });
+      } else {
+        dispatch({
+          type: reduxConstants.REQUEST_FAILED,
+          keyState: "delete",
           payload: null,
         });
       }
