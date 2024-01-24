@@ -16,7 +16,7 @@ const request = {
   },
   update: async ({ entity, id, jsonData }) => {
     try {
-      const response = await axios.post(entity + "/update" + id, jsonData);
+      const response = await axios.patch(entity + "/update/" + id, jsonData);
 
       return response.data;
     } catch (error) {

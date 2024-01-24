@@ -23,6 +23,10 @@ export default function CreateForm({ config, formElements }) {
     dispatch(crud.create({ entity, jsonData: trimmedValues }));
   };
 
+  const collapsePanelBox = () => {
+    collapsedBox.collapse();
+  };
+
   useEffect(() => {
     if (isSuccess) {
       // TODO: what is readBox.open()
@@ -38,11 +42,18 @@ export default function CreateForm({ config, formElements }) {
     <Loading isLoading={isLoading}>
       <Form form={form} layout="vertical" onFinish={onSubmit}>
         {formElements}
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+
+        <div className="d-flex">
+          <Form.Item className="pr-1" >
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+
+          <Form.Item>
+            <Button onClick={collapsePanelBox}>Cancel</Button>
+          </Form.Item>
+        </div>
       </Form>
     </Loading>
   );
