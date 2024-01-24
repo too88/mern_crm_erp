@@ -1,7 +1,6 @@
 import { createContext, useContext, useMemo, useReducer } from "react";
 import { contextReducer, initialState } from "./reducer";
 import contextAction from "./action";
-import contextSelector from "./selector";
 
 const CrudContext = createContext();
 
@@ -20,11 +19,9 @@ function useCrudContext() {
 
   const [state, dispatch] = context;
   const crudContextAction = contextAction(dispatch);
-  const crudContextSelector = contextSelector(state);
   return {
     state,
     crudContextAction,
-    crudContextSelector,
   };
 }
 

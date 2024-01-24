@@ -11,16 +11,7 @@ export const initialState = {
 
 export function contextReducer(state, action) {
   switch (action.type) {
-    case crudConstant.OPEN_MODAL:
-      return {
-        ...state,
-        isModelOpen: true,
-      };
-    case crudConstant.CLOSE_MODAL:
-      return {
-        ...state,
-        isModelOpen: false,
-      };
+    // panel
     case crudConstant.OPEN_PANEL:
       return {
         ...state,
@@ -36,6 +27,8 @@ export function contextReducer(state, action) {
         ...state,
         isPanelClose: !state.isPanelClose,
       };
+
+    // box
     case crudConstant.OPEN_BOX:
       return {
         ...state,
@@ -51,6 +44,8 @@ export function contextReducer(state, action) {
         ...state,
         isBoxCollapsed: !state.isBoxCollapsed,
       };
+
+    // readBox
     case crudConstant.OPEN_READ_BOX:
       return {
         ...state,
@@ -63,18 +58,13 @@ export function contextReducer(state, action) {
         ...state,
         isReadBoxOpen: false,
       };
-    case crudConstant.OPEN_ADVANCED_BOX:
+    case crudConstant.COLLAPSE_READ_BOX:
       return {
         ...state,
-        isAdvancedBoxOpen: true,
-        isEditBoxOpen: false,
-        isReadBoxOpen: false,
+        isReadBoxOpen: !state.isReadBoxOpen,
       };
-    case crudConstant.CLOSE_ADVANCED_BOX:
-      return {
-        ...state,
-        isAdvancedBoxOpen: false,
-      };
+
+    // editBox
     case crudConstant.OPEN_EDIT_BOX:
       return {
         ...state,
@@ -87,13 +77,8 @@ export function contextReducer(state, action) {
         ...state,
         isEditBoxOpen: false,
       };
-    case crudConstant.COLLAPSE_READ_BOX:
-      return {
-        ...state,
-        isReadBoxOpen: !state.isReadBoxOpen,
-      };
 
     default:
-      throw new Error(`unhandle action type: ${action.type}`);
+      throw new Error(`un handle action type: ${action.type}`);
   }
 }
