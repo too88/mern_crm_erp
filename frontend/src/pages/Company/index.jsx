@@ -7,6 +7,11 @@ const COMPANY = "company";
 export default function Company() {
   const entity = COMPANY;
 
+  const searchConfig = {
+    displayLabels: ["name"],
+    searchFields: "name",
+  };
+
   const deleteModalLabels = ["name"];
 
   const labels = {
@@ -25,6 +30,7 @@ export default function Company() {
     ...configPage,
     fields,
     deleteModalLabels,
+    searchConfig
   };
 
   return (
