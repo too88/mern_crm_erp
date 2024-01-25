@@ -69,7 +69,7 @@ export const crud = {
         });
       } else {
         dispatch({
-          type: reduxConstants.REQUEST_SUCCESS,
+          type: reduxConstants.REQUEST_FAILED,
           keyState: "list",
           payload: [],
         });
@@ -102,7 +102,7 @@ export const crud = {
         dispatch({
           type: reduxConstants.REQUEST_FAILED,
           keyState: "create",
-          payload: null,
+          payload: [],
         });
       }
     },
@@ -133,7 +133,7 @@ export const crud = {
         dispatch({
           type: reduxConstants.REQUEST_FAILED,
           keyState: "update",
-          payload: null,
+          payload: [],
         });
       }
     },
@@ -163,7 +163,32 @@ export const crud = {
         dispatch({
           type: reduxConstants.REQUEST_FAILED,
           keyState: "delete",
-          payload: null,
+          payload: [],
+        });
+      }
+    },
+  search:
+    ({ entity, options = {} }) =>
+    async (dispatch) => {
+      dispatch({
+        type: reduxConstants.REQUEST_LOADING,
+        keyState: "search",
+        payload: null,
+      });
+
+      let data = await request.search({ entity, options });
+
+      if (data.success) {
+        dispatch({
+          type: reduxConstants.REQUEST_SUCCESS,
+          keyState: "search",
+          payload: data.result,
+        });
+      } else {
+        dispatch({
+          type: reduxConstants.REQUEST_FAILED,
+          keyState: "search",
+          payload: [],
         });
       }
     },
