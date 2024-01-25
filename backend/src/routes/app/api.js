@@ -9,6 +9,7 @@ const routerApp = (entity, controller) => {
   // get method
   router.route(`/${entity}/read/:id`).get(controller["read"]);
   router.route(`/${entity}/list`).get(controller["list"]);
+  router.route(`/${entity}/search`).get(controller["search"]);
 
   // post method
   router.route(`/${entity}/create`).post(controller["create"]);

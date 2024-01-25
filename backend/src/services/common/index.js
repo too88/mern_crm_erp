@@ -7,6 +7,7 @@ const read = require("./read");
 const create = require("./create");
 const update = require("./update");
 const remove = require("./remove");
+const search = require("./search");
 
 const createCRUDService = (modelName) => {
   if (!allModelFileList.includes(modelName)) {
@@ -32,6 +33,7 @@ const createCRUDService = (modelName) => {
     },
     update: (req, res) => update(Model, req, res),
     delete: (req, res) => remove(Model, req, res),
+    search: (req, res) => search(Model, req, res),
   };
 
   return serviceList;
