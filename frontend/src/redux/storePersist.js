@@ -8,7 +8,26 @@ function isJSONString(str) {
   return true;
 }
 
-export const storePersist = {
+export const localStorageHealthCheck = async () => {
+  for (let i = 0; i < localStorage.length; ++i) {
+    try {
+      const result = window.localStorage.getItem(localStorage.key(i));
+      if (!isJSONString(result)) {
+        window.localStorage.removeItem(localStorage.key(i));
+      }
+
+      if (result && Object.keys(localStorage.key(i)).length == 0) {
+        window.localStorage.removeItem(localStorage.key(i));
+      }
+    } catch (error) {
+      window.localStorage.clear();
+
+      console.error("something went wrong at window.localStorage: ", error);
+    }
+  }
+};
+
+const storePersist = {
   set: (key, state) => {
     window.localStorage.setItem(key, JSON.stringify(state));
   },
@@ -32,3 +51,5 @@ export const storePersist = {
     window.localStorage.clear();
   },
 };
+
+export default storePersist

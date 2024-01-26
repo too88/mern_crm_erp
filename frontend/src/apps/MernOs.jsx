@@ -3,13 +3,16 @@ import PageLoader from "@/components/PageLoader";
 import { AppContextProvider } from "@/context/appContext";
 
 const ErpApp = lazy(() => import("./ErpApp"));
+const Localization = lazy(() => import("@/locale/Localization"));
 
 const DefaultApp = () => (
-  <AppContextProvider>
-    <Suspense fallback={<PageLoader />}>
-      <ErpApp />
-    </Suspense>
-  </AppContextProvider>
+  <Localization>
+    <AppContextProvider>
+      <Suspense fallback={<PageLoader />}>
+        <ErpApp />
+      </Suspense>
+    </AppContextProvider>
+  </Localization>
 );
 
 export default function MernOs() {

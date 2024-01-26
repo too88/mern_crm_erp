@@ -1,3 +1,4 @@
+import SelectLanguage from "@/components/SelectLanguage";
 import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Layout } from "antd";
 import { Link, useNavigate } from "react-router-dom";
@@ -84,6 +85,8 @@ export default function HeaderContent() {
           size="large"
         >Too</Avatar>
       </Dropdown>
+
+      <SelectLanguage />
     </Layout.Header>
   );
 }
