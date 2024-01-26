@@ -5,13 +5,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading";
 import { selectCreatedItem } from "@/redux/crudRedux/selector";
+import useLanguage from "@/locale/useLanguage";
 
 export default function CreateForm({ config, formElements }) {
   const dispatch = useDispatch();
+  const translate = useLanguage();
   let { entity } = config;
   const { isLoading, isSuccess } = useSelector(selectCreatedItem);
   const { crudContextAction } = useCrudContext();
-  const { panel, collapsedBox } = crudContextAction;
+  const { panel, collapsedBox, readBox } = crudContextAction;
   const [form] = Form.useForm();
 
   const onSubmit = (fieldsValue) => {
@@ -29,10 +31,11 @@ export default function CreateForm({ config, formElements }) {
 
   useEffect(() => {
     if (isSuccess) {
-      // TODO: what is readBox.open()
+      readBox.open();
       collapsedBox.open();
       panel.open();
       form.resetFields();
+      // NOTE: what exactly the resetAction used for ?
       // dispatch(crud.resetAction({ actionType: "create" }));
       dispatch(crud.list({ entity }));
     }
@@ -44,14 +47,14 @@ export default function CreateForm({ config, formElements }) {
         {formElements}
 
         <div className="d-flex">
-          <Form.Item className="pr-1" >
+          <Form.Item className="pr-1">
             <Button type="primary" htmlType="submit">
-              Submit
+              {translate("submit")}
             </Button>
           </Form.Item>
 
           <Form.Item>
-            <Button onClick={collapsePanelBox}>Cancel</Button>
+            <Button onClick={collapsePanelBox}>{translate("cancel")}</Button>
           </Form.Item>
         </div>
       </Form>

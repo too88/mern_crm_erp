@@ -47,6 +47,9 @@ export default function DrawerSidePanel({ config, headerPanel, topContent, botto
         style={{ opacity: opacitySider, paddingTop: paddingTopSider }}
       >
         {headerPanel}
+
+        <div className="space70"></div>
+
         <CollapseBox
           buttonTitle={ADD_NEW_ENTITY}
           isCollapsed={isBoxCollapsed}

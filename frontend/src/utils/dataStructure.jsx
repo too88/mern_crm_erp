@@ -13,7 +13,7 @@ export const dataForRead = ({ fields }) => {
   return columns;
 };
 
-export default function dataForTable({ fields }) {
+export default function dataForTable({ fields, translate }) {
   let columns = [];
 
   Object.keys(fields).forEach((key) => {
@@ -23,7 +23,7 @@ export default function dataForTable({ fields }) {
     const components = {};
 
     const defaultComponent = {
-      title: field.label ? field.label : key,
+      title: field.label ? translate(field.label) : translate(key),
       dataIndex: keyIndex,
     };
 

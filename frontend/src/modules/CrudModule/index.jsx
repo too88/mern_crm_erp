@@ -6,34 +6,26 @@ import SearchItem from "@/components/SearchItem";
 import UpdateForm from "@/components/UpdateForm";
 import { useCrudContext } from "@/context/crudContext";
 import CrudLayout from "@/layout/CrudLayout";
+import useLanguage from "@/locale/useLanguage";
 import { crud } from "@/redux/crudRedux/action";
 import { selectCurrentItem } from "@/redux/crudRedux/selector";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const HeaderPanel = ({ config }) => {
-  const { crudContextAction } = useCrudContext();
-  const { collapsedBox } = crudContextAction;
-
-  const addNewItem = () => {
-    collapsedBox.close();
-  };
-
   return (
     <Row gutter={8}>
-      <Col className="gutter-row" span={21}>
+      <Col className="gutter-row" span={24}>
         <SearchItem config={config} />
-      </Col>
-      <Col className="gutter-row" span={3}>
-        <Button block icon={<PlusOutlined />} onClick={addNewItem}></Button>
       </Col>
     </Row>
   );
 };
 
 function SidePanelTopContent({ config, formElements }) {
+  const translate = useLanguage();
   const dispatch = useDispatch();
   const { crudContextAction, state } = useCrudContext();
   const { deleteModalLabels } = config;
@@ -77,7 +69,7 @@ function SidePanelTopContent({ config, formElements }) {
             size="small"
             style={{ float: "right", marginLeft: "0px", marginTop: "10px" }}
           >
-            Remove
+            {translate("remove")}
           </Button>
           <Button
             onClick={editItem}
@@ -86,7 +78,7 @@ function SidePanelTopContent({ config, formElements }) {
             size="small"
             style={{ float: "right", marginRight: "5px", marginTop: "10px" }}
           >
-            Edit
+            {translate("edit")}
           </Button>
         </Col>
 

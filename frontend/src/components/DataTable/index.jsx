@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { generate as uniqueId } from "shortid";
 import * as constants from "@/constants/common";
 import { DeleteOutlined, EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
+import useLanguage from "@/locale/useLanguage";
 
 function AddNewItem({ config }) {
   const { ADD_NEW_ENTITY } = config;
@@ -30,6 +31,7 @@ function AddNewItem({ config }) {
 export default function DataTable({ config }) {
   let { entity, TABLE_NAME, fields, dataTableColumns } = config;
   const dispatch = useDispatch();
+  const translate = useLanguage();
   const { crudContextAction } = useCrudContext();
   const { panel, collapsedBox, readBox, modal } = crudContextAction;
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
@@ -38,12 +40,12 @@ export default function DataTable({ config }) {
 
   const items = [
     {
-      label: "Show",
+      label: translate('show'),
       key: "read",
       icon: <EyeOutlined />,
     },
     {
-      label: "Delete",
+      label: translate('delete'),
       key: "delete",
       icon: <DeleteOutlined />,
     },
@@ -63,7 +65,7 @@ export default function DataTable({ config }) {
 
   let dispatchColumns = [];
   if (fields) {
-    dispatchColumns = [...dataForTable({ fields })];
+    dispatchColumns = [...dataForTable({ fields, translate })];
   } else {
     dispatchColumns = [...dataTableColumns];
   }

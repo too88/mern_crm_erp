@@ -1,5 +1,6 @@
 import { useAppContext } from "@/context/appContext";
 import { useCrudContext } from "@/context/crudContext";
+import useLanguage from "@/locale/useLanguage";
 import { crud } from "@/redux/crudRedux/action";
 import { selectDeletedItem } from "@/redux/crudRedux/selector";
 import { Modal } from "antd";
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function DeleteModal({ config }) {
   const dispatch = useDispatch();
+  const translate = useLanguage();
   const { current: currentResult, isLoading, isSuccess } = useSelector(selectDeletedItem);
   const { state, crudContextAction } = useCrudContext();
   const { appContextAction } = useAppContext();
@@ -19,8 +21,8 @@ export default function DeleteModal({ config }) {
   let {
     entity,
     deleteModalLabels,
-    deleteMessage = "Are you sure you want to delete?",
-    modalTitle = "Confirm",
+    deleteMessage = translate("are_you_sure_you_want_to_delete"),
+    modalTitle = translate("confirm"),
   } = config;
 
   const handleOk = () => {
@@ -32,7 +34,7 @@ export default function DeleteModal({ config }) {
     navMenu.collapse();
 
     dispatch(crud.delete({ entity, id }));
-    dispatch(crud.list({ entity }));
+    // dispatch(crud.list({ entity }));
   };
 
   const handleCancel = () => {

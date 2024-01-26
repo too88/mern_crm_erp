@@ -94,6 +94,7 @@ export const crud = {
           payload: data.result,
         });
 
+        // return new table data
         dispatch({
           type: reduxConstants.CURRENT_ITEM,
           payload: data.result,
@@ -125,6 +126,7 @@ export const crud = {
           payload: data.result,
         });
 
+        // return new table data
         dispatch({
           type: reduxConstants.CURRENT_ITEM,
           payload: data.result,
@@ -155,9 +157,10 @@ export const crud = {
           payload: data.result,
         });
 
+        // return new table data
         dispatch({
-          type: reduxConstants.RESET_ACTION,
-          keyState: "delete",
+          type: reduxConstants.CURRENT_ITEM,
+          payload: data.result,
         });
       } else {
         dispatch({

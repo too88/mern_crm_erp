@@ -13,7 +13,7 @@ export default function ReadItem({ config }) {
   const { isReadBoxOpen } = state;
   const [listState, setListState] = useState([]);
 
-  if (fields) readColumns = [...dataForRead({ fields: fields })];
+  if (fields) readColumns = [...dataForRead({ fields })];
 
   const show = isReadBoxOpen ? { display: "block", opacity: 1 } : { display: "none", opacity: 0 };
 

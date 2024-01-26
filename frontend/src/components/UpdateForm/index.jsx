@@ -7,10 +7,12 @@ import { useCrudContext } from "@/context/crudContext";
 import { crud } from "@/redux/crudRedux/action";
 import { useEffect } from "react";
 import dayjs from "dayjs";
+import useLanguage from "@/locale/useLanguage";
 
 export default function UpdateForm({ config, formElements }) {
   let { entity } = config;
   const [form] = Form.useForm();
+  const translate = useLanguage();
   const dispatch = useDispatch();
   const { current: currentResult, isLoading, isSuccess } = useSelector(selectUpdatedItem);
   const { state, crudContextAction } = useCrudContext();
@@ -81,7 +83,7 @@ export default function UpdateForm({ config, formElements }) {
             }}
           >
             <Button type="primary" htmlType="submit">
-              Save
+            {translate('save')}
             </Button>
           </Form.Item>
 
@@ -91,7 +93,7 @@ export default function UpdateForm({ config, formElements }) {
               paddingLeft: "5px",
             }}
           >
-            <Button onClick={showCurrentRecord}>Cancel</Button>
+            <Button onClick={showCurrentRecord}>{translate('cancel')}</Button>
           </Form.Item>
         </Form>
       </Loading>

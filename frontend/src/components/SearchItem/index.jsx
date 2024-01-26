@@ -1,19 +1,19 @@
+import { DEBOUNCE_500 } from "@/constants/common";
 import { useCrudContext } from "@/context/crudContext";
 import useDebounce from "@/hooks/useDebounce";
 import { crud } from "@/redux/crudRedux/action";
 import { selectSearchedItem } from "@/redux/crudRedux/selector";
-import { SearchOutlined } from "@ant-design/icons";
 import { Empty, Select } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function SearchItemComponent({ config, onRerender }) {
-  let { entity, searchConfig } = config;
-  const isSearching = useRef(false);
+  let { entity, searchConfig, PANEL_TITLE } = config;
+  const [isSearching, setIsSearching] = useState(false);
   const dispatch = useDispatch();
   const { result: currentResult, isLoading, isSuccess } = useSelector(selectSearchedItem);
   const { crudContextAction } = useCrudContext();
-  const { displayLabels, searchFields, outputValue = " id" } = searchConfig;
+  const { displayLabels, searchFields, outputValue = "_id" } = searchConfig;
   const { panel, collapsedBox, readBox } = crudContextAction;
 
   const [selectOptions, setSelectOptions] = useState([]);
@@ -37,7 +37,7 @@ function SearchItemComponent({ config, onRerender }) {
 
   const onSearch = (searchText) => {
     if (searchText && searchText != "") {
-      isSearching.current = true;
+      setIsSearching(true);
       setSearching(true);
       setSelectOptions([]);
       setCurrentValue(undefined);
@@ -49,7 +49,7 @@ function SearchItemComponent({ config, onRerender }) {
     () => {
       setDebouncedValue(valToSearch);
     },
-    500,
+    DEBOUNCE_500,
     [valToSearch]
   );
 
@@ -73,7 +73,7 @@ function SearchItemComponent({ config, onRerender }) {
   }, [debouncedValue]);
 
   useEffect(() => {
-    if (isSearching.current) {
+    if (isSearching) {
       if (isSuccess) {
         setSelectOptions(currentResult);
       } else {
@@ -89,7 +89,7 @@ function SearchItemComponent({ config, onRerender }) {
       loading={isLoading}
       showSearch
       allowClear
-      placeholder={<SearchOutlined style={{ float: "right", padding: "8px 0" }} />}
+      placeholder={`${"Search " + PANEL_TITLE}`}
       defaultActiveFirstOption={false}
       filterOption={false}
       notFoundContent={searching ? "...Searching" : <Empty />}
