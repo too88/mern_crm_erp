@@ -1,3 +1,6 @@
+import { Tag } from "antd";
+import color from "./color";
+
 export const dataForRead = ({ fields }) => {
   let columns = [];
 
@@ -20,7 +23,19 @@ export default function dataForTable({ fields, translate }) {
     let field = fields[key];
     const keyIndex = field.dataIndex ?? [key];
 
-    const components = {};
+    const components = {
+      color: {
+        title: field.label ?? key,
+        dataIndex: keyIndex,
+        render: (text) => {
+          return (
+            <Tag bordered={false} color={text}>
+              {color.find((x) => x.value === text)?.label}
+            </Tag>
+          );
+        },
+      },
+    };
 
     const defaultComponent = {
       title: field.label ? translate(field.label) : translate(key),
@@ -29,9 +44,9 @@ export default function dataForTable({ fields, translate }) {
 
     const type = field.type;
 
-    if (!type.disableForTable) {
-      columns.push(defaultComponent);
-    }
+    Object.keys(components).includes(type)
+      ? columns.push(components[type])
+      : columns.push(defaultComponent);
   });
 
   return columns;
