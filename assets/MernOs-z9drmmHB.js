@@ -1,7 +1,0 @@
-import{C as a,a as u,O as c,r as o,j as n,_ as i,P as l}from"./index-TeCOW50q.js";const _={isNavMenuClose:!1};function x(e,t){switch(t.type){case c:return{isNavMenuClose:!1};case u:return{isNavMenuClose:!0};case a:return{isNavMenuClose:!e.isNavMenuClose};default:throw new Error(`unhandled action type: ${t.type}`)}}const d=e=>({navMenu:{open:()=>{e({type:c})},close:()=>{e({type:u})},collapse:()=>{e({type:a})}}}),p=o.createContext();function C({children:e}){const[t,s]=o.useReducer(x,_),r=o.useMemo(()=>[t,s],[t]);return n.jsx(p.Provider,{value:r,children:e})}function m(){const e=o.useContext(p);if(e===void 0)throw new Error("useAppContext must be used within a AppContextProvider");const[t,s]=e,r=d(s);return{state:t,appContextAction:r}}const v=o.lazy(()=>i(()=>import("./ErpApp-n-ba8t7L.js").then(e=>e.an),__vite__mapDeps([0,1,2,3]),import.meta.url)),A=o.lazy(()=>i(()=>import("./Localization-MjvvtRf3.js"),__vite__mapDeps([4,1,2,3]),import.meta.url)),E=()=>n.jsx(A,{children:n.jsx(C,{children:n.jsx(o.Suspense,{fallback:n.jsx(l,{}),children:n.jsx(v,{})})})});function f(){return n.jsx(E,{})}const N=Object.freeze(Object.defineProperty({__proto__:null,default:f},Symbol.toStringTag,{value:"Module"}));export{N as M,m as u};
-function __vite__mapDeps(indexes) {
-  if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./ErpApp-n-ba8t7L.js","./index-TeCOW50q.js","./index-IbX2p2Xr.css","./selector-IsIeBB6f.js","./Localization-MjvvtRf3.js"]
-  }
-  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
-}
