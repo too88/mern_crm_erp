@@ -17,6 +17,14 @@ const lang = {
   phone: "Phone",
   country: "Country",
   name: "Name",
+  firstname: "First Name",
+  lastname: "Last Name",
+  add_new_person: "Add New Person",
+  people_list: "People List",
+  person: "Person",
+  product_category: "Product Category",
+  product_category_list: "Product Category List",
+  add_new_product_category: "Add New Product Category",
 };
 
 export default lang;

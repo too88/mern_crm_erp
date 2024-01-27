@@ -17,6 +17,15 @@ const lang = {
   phone: "Điện thoại",
   email: "Email",
   website: "Trang web",
+  firstname: "Tên",
+  lastname: "Họ",
+  add_new_person: "Thêm người mới",
+  people_list: "Danh sách người",
+  person: "Người",
+product_category: "Danh mục sản phẩm",
+product_category_list: "Danh sách danh mục sản phẩm",
+add_new_product_category: "Thêm danh mục sản phẩm mới",
+
 };
 
 export default lang;

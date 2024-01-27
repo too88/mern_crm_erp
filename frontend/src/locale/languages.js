@@ -1,7 +1,7 @@
 const languages = [
   {
     icon: "🇻🇳 ",
-    label: "Vietnamese",
+    label: "VN",
     value: "vi_vn",
   },
   {
