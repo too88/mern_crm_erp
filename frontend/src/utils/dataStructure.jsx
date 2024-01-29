@@ -1,5 +1,6 @@
 import { Tag } from "antd";
 import color from "./color";
+import { countryList } from "./countryList";
 
 export const dataForRead = ({ fields }) => {
   let columns = [];
@@ -16,7 +17,7 @@ export const dataForRead = ({ fields }) => {
   return columns;
 };
 
-export default function dataForTable({ fields, translate }) {
+export default function dataForTable({ fields, translate, moneyFormatter }) {
   let columns = [];
 
   Object.keys(fields).forEach((key) => {
@@ -31,6 +32,34 @@ export default function dataForTable({ fields, translate }) {
           return (
             <Tag bordered={false} color={text}>
               {color.find((x) => x.value === text)?.label}
+            </Tag>
+          );
+        },
+      },
+      currency: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        onCell: () => {
+          return {
+            style: {
+              textAlign: "right",
+              whiteSpace: "nowrap",
+            },
+          };
+        },
+        render: (_, record) => moneyFormatter({ amount: record[key] }),
+      },
+      async: {},
+      country: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        render: (_, record) => {
+          const selectedCountry = countryList.find((item) => item.value === record[key]);
+
+          return (
+            <Tag bordered={false} color={field.color || undefined}>
+              {selectedCountry?.icon && selectedCountry?.icon + " "}
+              {selectedCountry?.label && translate(selectedCountry.label)}
             </Tag>
           );
         },

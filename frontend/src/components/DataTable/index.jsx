@@ -10,6 +10,7 @@ import { generate as uniqueId } from "shortid";
 import * as constants from "@/constants/common";
 import { DeleteOutlined, EllipsisOutlined, EyeOutlined } from "@ant-design/icons";
 import useLanguage from "@/locale/useLanguage";
+import useMoney from "@/settings/useMoney";
 
 function AddNewItem({ config }) {
   const { ADD_NEW_ENTITY } = config;
@@ -33,6 +34,7 @@ export default function DataTable({ config }) {
   const dispatch = useDispatch();
   const translate = useLanguage();
   const { crudContextAction } = useCrudContext();
+  const { moneyFormatter } = useMoney();
   const { panel, collapsedBox, readBox, modal } = crudContextAction;
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
 
@@ -40,12 +42,12 @@ export default function DataTable({ config }) {
 
   const items = [
     {
-      label: translate('show'),
+      label: translate("show"),
       key: "read",
       icon: <EyeOutlined />,
     },
     {
-      label: translate('delete'),
+      label: translate("delete"),
       key: "delete",
       icon: <DeleteOutlined />,
     },
@@ -65,7 +67,7 @@ export default function DataTable({ config }) {
 
   let dispatchColumns = [];
   if (fields) {
-    dispatchColumns = [...dataForTable({ fields, translate })];
+    dispatchColumns = [...dataForTable({ fields, translate, moneyFormatter })];
   } else {
     dispatchColumns = [...dataTableColumns];
   }
@@ -131,7 +133,7 @@ export default function DataTable({ config }) {
         onBack={() => window.history.back()}
         title={TABLE_NAME}
         ghost={false}
-        extra={[<AddNewItem key={uniqueId()} config={config}/>]}
+        extra={[<AddNewItem key={uniqueId()} config={config} />]}
       ></PageHeader>
 
       <Table
