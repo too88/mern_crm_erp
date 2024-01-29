@@ -201,3 +201,11 @@ html, body, #root, .ant-layout {
 .pr-1 {
   padding-right: 1em;
 }
+
+.moneyInput {
+  width: 100%;
+}
+
+.moneyInput input {
+  text-align: right;
+}
