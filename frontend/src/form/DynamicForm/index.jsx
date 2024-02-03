@@ -1,4 +1,5 @@
 import AutoCompleteAsync from "@/components/AutoCompleteAsync";
+import SelectAsync from "@/components/SelectAsync";
 import useLanguage from "@/locale/useLanguage";
 import useMoney from "@/settings/useMoney";
 import { countryList } from "@/utils/countryList";
@@ -35,6 +36,17 @@ function FormElement({ field }) {
     phone: <Input style={{ width: "100%" }} placeholder="+84 909 123 123" />,
     number: <InputNumber style={{ width: "100%" }} />,
     boolean: <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} />,
+    async: (
+      <SelectAsync 
+      entity={field.entity}
+      displayLabels={field.displayLabels}
+      outputValue={field.outputValue}
+      loadDefault={field.loadDefault}
+      withRedirect={field.withRedirect}
+      urlRedirect={field.urlRedirect}
+      redirectLabel={field.redirectLabel}
+      />
+    ),
     currency: (
       <InputNumber
         className="moneyInput"
