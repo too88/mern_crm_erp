@@ -37,15 +37,15 @@ function FormElement({ field }) {
     number: <InputNumber style={{ width: "100%" }} />,
     boolean: <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} />,
     async: (
-      <SelectAsync 
-      entity={field.entity}
-      displayLabels={field.displayLabels}
-      outputValue={field.outputValue}
-      loadDefault={field.loadDefault}
-      withRedirect={field.withRedirect}
-      urlRedirect={field.urlRedirect}
-      redirectLabel={field.redirectLabel}
-      />
+      <SelectAsync
+        entity={field.entity}
+        displayLabels={field.displayLabels}
+        outputValue={field.outputValue}
+        loadDefault={field.loadDefault}
+        withRedirect={field.withRedirect}
+        urlRedirect={field.urlRedirect}
+        redirectLabel={field.redirectLabel}
+      ></SelectAsync>
     ),
     currency: (
       <InputNumber

@@ -1,4 +1,5 @@
 import { useCrudContext } from "@/context/crudContext";
+import useLanguage from "@/locale/useLanguage";
 import { selectCurrentItem } from "@/redux/crudRedux/selector";
 import { dataForRead } from "@/utils/dataStructure";
 import { valueByString } from "@/utils/helpers";
@@ -7,13 +8,14 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function ReadItem({ config }) {
+  const translate = useLanguage();
   let { readColumns, fields } = config;
   const { result: currentResult } = useSelector(selectCurrentItem);
   const { state } = useCrudContext();
   const { isReadBoxOpen } = state;
   const [listState, setListState] = useState([]);
 
-  if (fields) readColumns = [...dataForRead({ fields })];
+  if (fields) readColumns = [...dataForRead({ fields, translate })];
 
   const show = isReadBoxOpen ? { display: "block", opacity: 1 } : { display: "none", opacity: 0 };
 

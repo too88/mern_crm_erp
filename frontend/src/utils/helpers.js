@@ -1,5 +1,5 @@
 function get(obj, key) {
-  return key.split().reduce(function (acc, cur) {
+  return key.split('.').reduce(function (acc, cur) {
     return acc === undefined || acc === null ? acc : acc[cur];
   }, obj);
 }

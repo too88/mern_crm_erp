@@ -1,6 +1,9 @@
-import { Tag } from "antd";
+import { Switch, Tag } from "antd";
 import color from "./color";
 import { countryList } from "./countryList";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { crud } from "@/redux/crudRedux/action";
 
 export const dataForRead = ({ fields }) => {
   let columns = [];
@@ -17,7 +20,9 @@ export const dataForRead = ({ fields }) => {
   return columns;
 };
 
-export default function dataForTable({ fields, translate, moneyFormatter }) {
+export default function dataForTable({ fields, translate, moneyFormatter, updateAction }) {
+  const dispatch = useDispatch();
+
   let columns = [];
 
   Object.keys(fields).forEach((key) => {
@@ -25,6 +30,27 @@ export default function dataForTable({ fields, translate, moneyFormatter }) {
     const keyIndex = field.dataIndex ?? [key];
 
     const components = {
+      boolean: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        onCell: () => ({
+          props: {
+            style: {
+              width: "60px",
+            },
+          },
+        }),
+        render: (_, record) => {
+          return (
+            <Switch
+              onChange={() => updateAction(record, key)}
+              checked={record[key]}
+              checkedChildren={<CheckOutlined />}
+              unCheckedChildren={<CloseOutlined />}
+            />
+          );
+        },
+      },
       color: {
         title: field.label ?? key,
         dataIndex: keyIndex,
@@ -49,7 +75,17 @@ export default function dataForTable({ fields, translate, moneyFormatter }) {
         },
         render: (_, record) => moneyFormatter({ amount: record[key] }),
       },
-      async: {},
+      async: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        render: (text, record) => {
+          return (
+            <Tag bordered={false} color={field.color || record[key]?.color || record.color}>
+              {text}
+            </Tag>
+          );
+        },
+      },
       country: {
         title: field.label ? translate(field.label) : translate(key),
         dataIndex: keyIndex,
