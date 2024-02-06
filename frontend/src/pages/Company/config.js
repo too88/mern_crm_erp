@@ -1,18 +1,15 @@
 export const fields = {
-    name: {
-        type: 'string',
-        require: true,
-    },
-    country: {
-        type: 'country'
-    },
-    phone: {
-        type: 'phone'
-    },
-    email: {
-        type: 'email'
-    },
-    website: {
-        type: 'url'
-    },
-}
+  name: {
+    type: "string",
+    require: true,
+  },
+  country: {
+    type: "country",
+  },
+  phone: {
+    type: "phone",
+  },
+  email: {
+    type: "email",
+  },
+};

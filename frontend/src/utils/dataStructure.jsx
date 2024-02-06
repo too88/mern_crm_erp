@@ -21,8 +21,6 @@ export const dataForRead = ({ fields }) => {
 };
 
 export default function dataForTable({ fields, translate, moneyFormatter, updateAction }) {
-  const dispatch = useDispatch();
-
   let columns = [];
 
   Object.keys(fields).forEach((key) => {

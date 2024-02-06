@@ -4,7 +4,7 @@ import { selectListItems } from "@/redux/crudRedux/selector";
 import dataForTable from "@/utils/dataStructure";
 import { PageHeader } from "@ant-design/pro-layout";
 import { Button, Dropdown, Table } from "antd";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generate as uniqueId } from "shortid";
 import * as constants from "@/constants/common";
@@ -37,7 +37,6 @@ export default function DataTable({ config }) {
   const { moneyFormatter } = useMoney();
   const { panel, collapsedBox, readBox, modal } = crudContextAction;
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
-  const [isUpdate, setIsUpdate] = useState(false)
   const { pagination, items: dataSource } = listResult;
 
   const items = [
@@ -66,7 +65,6 @@ export default function DataTable({ config }) {
   };
 
   const handleUpdate = (record, key) => {
-    setIsUpdate(false)
     dispatch(
       crud.update({ entity, id: record._id, jsonData: { enabled: !record[key] } })
     )

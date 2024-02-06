@@ -38,7 +38,7 @@ export default function AutoCompleteAsync({
   };
 
   const labels = (optionField) => {
-    return displayLabels.map((x) => optionField[x].join(" "));
+    return displayLabels.map((x) => optionField[x]).join(" ");
   };
 
   const onSearch = (searchText) => {

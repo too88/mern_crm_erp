@@ -124,7 +124,7 @@ function FormElement({ field }) {
         displayLabels={field.displayLabels}
         searchFields={field.searchFields}
         outputValue={field.outputValue}
-      />
+      ></AutoCompleteAsync>
     ),
   };
 
