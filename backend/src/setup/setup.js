@@ -1,8 +1,6 @@
 require("module-alias/register");
 require("dotenv").config({ path: ".env" });
-const { globSync } = require("glob");
 const connectionModule = require("@/setup/connection");
-const fs = require("fs");
 const { v4 } = require("uuid");
 
 // connect database
