@@ -19,6 +19,11 @@ function Sidebar({ collapsible }) {
 
   const items = [
     {
+      key: "customer",
+      icon: <UserOutlined />,
+      label: <Link to={"/customer"}>Customer</Link>,
+    },
+    {
       key: "people",
       icon: <UserOutlined />,
       label: <Link to={"/people"}>People</Link>,

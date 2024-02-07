@@ -22,10 +22,12 @@ const lang = {
   add_new_person: "Thêm người mới",
   people_list: "Danh sách người",
   person: "Người",
-product_category: "Danh mục sản phẩm",
-product_category_list: "Danh sách danh mục sản phẩm",
-add_new_product_category: "Thêm danh mục sản phẩm mới",
-
+  product_category: "Danh mục sản phẩm",
+  product_category_list: "Danh sách danh mục sản phẩm",
+  add_new_product_category: "Thêm danh mục sản phẩm mới",
+  client: "Khách hàng",
+  client_list: "Danh sách khách hàng",
+  add_new_client: "Thêm khách hàng mới",
 };
 
 export default lang;

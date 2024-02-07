@@ -143,8 +143,8 @@ export default function DataTable({ config }) {
 
       <Table
         columns={dataTableColumns}
-        rowKey={(item) => item._id}
-        dataSource={[...dataSource]}
+        rowKey={(item) => item.uuid}
+        dataSource={dataSource}
         pagination={pagination}
         loading={listIsLoading}
         onChange={handleDataTableLoad}
