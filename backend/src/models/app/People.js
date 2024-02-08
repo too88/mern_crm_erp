@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const { v4 } = require('uuid');
 
 const peopleSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    default: v4(),
-  },
+  // _id: {
+  //   type: String,
+  //   default: v4(),
+  // },
   removed: {
     type: Boolean,
     default: false,
   },
+  //TODO: feature activation people after register
   enabled: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   firstname: {
     type: String,
@@ -33,7 +33,7 @@ const peopleSchema = new mongoose.Schema({
     trim: true,
   },
   company: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: 'Company',
   },
   phone: {

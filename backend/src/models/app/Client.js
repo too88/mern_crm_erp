@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const clientSchema = new mongoose.Schema({
   source: String,
-  category: String,
   removed: {
     type: Boolean,
     default: false,
@@ -11,12 +10,6 @@ const clientSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  branchs: [
-    {
-      type: String,
-      ref: "Branch",
-    },
-  ],
   type: {
     type: String,
     default: "Company",
@@ -28,21 +21,21 @@ const clientSchema = new mongoose.Schema({
     required: true,
   },
   company: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "Company",
     autopopulate: true,
   },
   people: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "People",
     autopopulate: true,
   },
   createdBy: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "Admin",
   },
   assigned: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "Admin",
   },
   created: {

@@ -1,23 +1,22 @@
 const mongoose = require('mongoose');
-const { v4 } = require('uuid');
 
 const productSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    default: v4(),
-  },
+  // _id: {
+  //   type: String,
+  //   default: v4(),
+  // },
   removed: {
     type: Boolean,
     default: false,
   },
   enabled: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   productCategory: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: 'ProductCategory',
-    require: true,
+    required: true,
     autopopulate: true,
   },
   name: {

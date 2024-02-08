@@ -10,14 +10,14 @@ const employeeSchema = new mongoose.Schema({
     default: false,
   },
   branch: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "Branch",
   },
   isAdmin: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     ref: "Admin",
   },
-  firsname: {
+  firstname: {
     type: String,
     trim: true,
     required: true,
@@ -31,7 +31,6 @@ const employeeSchema = new mongoose.Schema({
   taxNumber: String,
   birthday: Date,
   notes: String,
-  category: String,
   status: String,
   address: {
     type: String,
