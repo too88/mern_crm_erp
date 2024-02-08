@@ -1,4 +1,7 @@
+import DynamicForm from "@/form/DynamicForm";
 import useLanguage from "@/locale/useLanguage";
+import CrudModule from "@/modules/CrudModule";
+import { fields } from "./config";
 
 const CLIENT = "client";
 

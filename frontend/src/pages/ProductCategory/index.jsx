@@ -16,7 +16,7 @@ export default function ProductCategory() {
 
   const Labels = {
     PANEL_TITLE: translate("product_category"),
-    DATATABLE_TITLE: translate("product_category_list"),
+    TABLE_NAME: translate("product_category_list"),
     ADD_NEW_ENTITY: translate("add_new_product_category"),
     ENTITY_NAME: translate("product_category"),
   };

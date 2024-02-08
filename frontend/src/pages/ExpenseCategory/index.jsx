@@ -1,25 +1,26 @@
 import useLanguage from "@/locale/useLanguage";
 import { fields } from "./config";
-import CrudModule from "@/modules/CrudModule";
 import DynamicForm from "@/form/DynamicForm";
+import CrudModule from "@/modules/CrudModule";
 
-const PRODUCT = "product";
+const EXPENSE_CATEGORY = 'expensecategory';
 
-export default function Product() {
+export default function ExpenseCategory() {
   const translate = useLanguage();
-  const entity = PRODUCT;
+  const entity = EXPENSE_CATEGORY;
 
   const searchConfig = {
-    displayLabels: ["name"],
-    searchFields: "name",
+    displayLabels: ['name'],
+    searchFields: 'name',
   };
-  const deleteModalLabels = ["name"];
+
+  const deleteModalLabels = ['name'];
 
   const labels = {
-    PANEL_TITLE: translate("product"),
-    TABLE_NAME: translate("product_list"),
-    ADD_NEW_ENTITY: translate("add_new_product"),
-    ENTITY_NAME: translate("product"),
+    PANEL_TITLE: translate('expense_category'),
+    TABLE_NAME: translate('expense_category_list'),
+    ADD_NEW_ENTITY: translate('add_new_expense_category'),
+    ENTITY_NAME: translate('expense_category'),
   };
 
   const configPage = {
@@ -33,6 +34,7 @@ export default function Product() {
     searchConfig,
     deleteModalLabels,
   };
+
   return (
     <CrudModule
       createForm={<DynamicForm fields={fields} />}
