@@ -5,9 +5,11 @@ import useMoney from "@/settings/useMoney";
 import { countryList } from "@/utils/countryList";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { DatePicker, Form, Input, InputNumber, Select, Switch, Tag } from "antd";
+import { useState } from "react";
 import { generate as uniqueId } from "shortid";
 
 export default function DynamicForm({ fields }) {
+  const [feedback, setFeedback] = useState();
   return (
     <>
       {Object.keys(fields).map((key) => {
@@ -15,19 +17,27 @@ export default function DynamicForm({ fields }) {
 
         if (!field.disableForForm) {
           field.name = key;
-          if (!field.label) field.label = key;
-
-          return <FormElement key={key} field={field} />;
+          if (!field.label) {
+            field.label = key;
+          }
+          if (field.hasFeedback) {
+            return <FormElement setFeedback={setFeedback} key={key} field={field} />;
+          } else if (feedback && field.feedback) {
+            if (feedback == field.feedback) {
+              return <FormElement key={key} field={field} />;
+            }
+          } else {
+            return <FormElement key={key} field={field} />;
+          }
         }
       })}
     </>
   );
 }
 
-function FormElement({ field }) {
+function FormElement({ field, setFeedback }) {
   const translate = useLanguage();
   const money = useMoney();
-
   const componentAggregation = {
     string: <Input autoComplete="off" />,
     url: <Input addonBefore="https://" autoComplete="off" placeholder="www.sample.com" />,
@@ -56,7 +66,6 @@ function FormElement({ field }) {
         addonBefore={money.currency_position === "before" ? money.currency_symbol : undefined}
       />
     ),
-    // date: <DatePicker />,
     select: (
       <Select defaultValue={field.defaultValue} style={{ width: "100%" }}>
         {field.options?.map((option) => {
@@ -81,16 +90,6 @@ function FormElement({ field }) {
         })}
       </Select>
     ),
-    // tag: (
-    //   <Select>
-    //     <Select.Option></Select.Option>
-    //   </Select>
-    // ),
-    // array: (
-    //   <Select>
-    //     <Select.Option></Select.Option>
-    //   </Select>
-    // ),
     country: (
       <Select
         showSearch
@@ -126,8 +125,35 @@ function FormElement({ field }) {
         outputValue={field.outputValue}
       ></AutoCompleteAsync>
     ),
+    selectWithFeedback: (
+      <Select
+        onChange={(value) => setFeedback(value)}
+        defaultValue={field.defaultValue}
+        style={{
+          width: "100%",
+        }}
+      >
+        {field.options?.map((option) => (
+          <Select.Option key={`${uniqueId()}`} value={option.value}>
+            {translate(option.label)}
+          </Select.Option>
+        ))}
+      </Select>
+    ),
+    selectWithTranslation: (
+      <Select>
+        {field?.options?.map((option) => {
+          return (
+            <Select.Option key={`${uniqueId()}`} value={option.value}>
+              <Tag bordered={false} color={option.color}>
+                {translate(option.label)}
+              </Tag>
+            </Select.Option>
+          );
+        })}
+      </Select>
+    ),
   };
-
   const ruleTypes = {
     string: "string",
     textarea: "string",
@@ -138,7 +164,6 @@ function FormElement({ field }) {
     email: "email",
   };
 
-  // TODO: should get field's type from upper prop
   const renderComponent = componentAggregation[field.type] ?? componentAggregation["string"];
 
   return (

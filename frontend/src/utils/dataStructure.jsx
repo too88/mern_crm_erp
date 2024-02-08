@@ -2,8 +2,6 @@ import { Switch, Tag } from "antd";
 import color from "./color";
 import { countryList } from "./countryList";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import { crud } from "@/redux/crudRedux/action";
 
 export const dataForRead = ({ fields }) => {
   let columns = [];
@@ -24,7 +22,7 @@ export default function dataForTable({ fields, translate, moneyFormatter, update
   let columns = [];
 
   Object.keys(fields).forEach((key) => {
-    let field = fields[key];
+  let field = fields[key];
     const keyIndex = field.dataIndex ?? [key];
 
     const components = {
@@ -98,6 +96,51 @@ export default function dataForTable({ fields, translate, moneyFormatter, update
           );
         },
       },
+      stringWithColor: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        render: (text, record) => {
+          return (
+            <Tag bordered={false} color={record.color}>
+              {text}
+            </Tag>
+          )
+        }
+      },
+      selectWithFeedback: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        render: (_, record) => {
+          if(field.renderAsTag) {
+            const selectOption = field.options.find((x) => x.value === record[key])
+
+            return (
+              <Tag bordered={false} color={selectOption?.color}>
+                {record[key] && translate(record[key])}
+              </Tag>
+            )
+          } else {
+            return record[key] && translate(record[key])
+          }
+        }
+      },
+      selectWithTranslation: {
+        title: field.label ? translate(field.label) : translate(key),
+        dataIndex: keyIndex,
+        render: (_, record) => {
+          if(field.renderAsTag) {
+            const selectOption = field.options.find((x) => x.value === record[key])
+
+            return (
+              <Tag bordered={false} color={selectOption?.color}>
+                {record[key] && translate(record[key])}
+              </Tag>
+            )
+          } else {
+            return record[key] && translate(record[key])
+          }
+        }
+      }
     };
 
     const defaultComponent = {
