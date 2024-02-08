@@ -34,6 +34,11 @@ function Sidebar({ collapsible }) {
       label: <Link to={"/company"}>Company</Link>,
     },
     {
+      key: "lead",
+      icon: <ShopOutlined />,
+      label: <Link to={"/lead"}>Lead</Link>,
+    },
+    {
       key: "product",
       icon: <TagOutlined />,
       label: <Link to={"/product"}>Product</Link>,
@@ -42,6 +47,16 @@ function Sidebar({ collapsible }) {
       key: "productcategory",
       icon: <TagsOutlined />,
       label: <Link to={"/category/product"}>Product Category</Link>,
+    },
+    {
+      key: "expense",
+      icon: <TagsOutlined />,
+      label: <Link to={"/expense"}>Expense</Link>,
+    },
+    {
+      key: "expenseCategory",
+      icon: <TagsOutlined />,
+      label: <Link to={"/category/expense"}>Expense Category</Link>,
     },
   ];
 
