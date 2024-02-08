@@ -9,12 +9,12 @@ const adminSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  branchs: [
-    {
-      type: String,
-      ref: "Branch",
-    },
-  ],
+  // branchs: [
+  //   {
+  //     type: String,
+  //     ref: "Branch",
+  //   },
+  // ],
   email: {
     type: String,
     unique: true,
@@ -34,7 +34,7 @@ const adminSchema = new mongoose.Schema({
   role: {
     type: String,
     default: "staff",
-    enum: ["superadmin", "admin", "staffAdmin", "staff", "createOnly", "readOnly"],
+    enum: ["superAdmin", "admin", "staffAdmin", "staff", "createOnly", "readOnly"],
   },
   created: {
     type: Date,
@@ -45,3 +45,5 @@ const adminSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+module.exports = mongoose.model("Admin", adminSchema);
