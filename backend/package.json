@@ -17,6 +17,7 @@
     "setup:prod": "cross-env NODE_ENV=production node src/setup/setup.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "16.3.1",
@@ -27,7 +28,7 @@
     "mongoose": "^8.0.3",
     "mongoose-autopopulate": "^1.1.0",
     "node-cache": "^5.1.2",
-    "uuid": "^9.0.1"
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
