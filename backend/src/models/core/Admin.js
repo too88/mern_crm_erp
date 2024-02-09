@@ -9,12 +9,6 @@ const adminSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  // branchs: [
-  //   {
-  //     type: String,
-  //     ref: "Branch",
-  //   },
-  // ],
   email: {
     type: String,
     unique: true,
