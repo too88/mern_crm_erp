@@ -9,6 +9,7 @@ const People = lazy(() => import("@/pages/People"));
 const Customer = lazy(() => import("@/pages/Customer"));
 const Lead = lazy(() => import("@/pages/Lead"));
 const Expense = lazy(() => import("@/pages/Expense"));
+const Admin = lazy(() => import("@/pages/Admin"));
 
 export default function AppRouter() {
   const element = useRoutes([
@@ -43,6 +44,10 @@ export default function AppRouter() {
     {
       path: "/expense",
       element: <Expense />,
+    },
+    {
+      path: "/admin",
+      element: <Admin />,
     },
   ]);
 

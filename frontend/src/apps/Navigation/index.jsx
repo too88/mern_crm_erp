@@ -1,16 +1,24 @@
 import { useAppContext } from "@/context/appContext";
-import { ShopOutlined, TagOutlined, TagsOutlined, UserOutlined } from "@ant-design/icons";
+import useLanguage from "@/locale/useLanguage";
+import {
+  SettingOutlined,
+  ShopOutlined,
+  TagOutlined,
+  TagsOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function Navigation () {
+export default function Navigation() {
   return <Sidebar collapsible={false} />;
-};
+}
 
 //TODO: complete Sidebar
 function Sidebar({ collapsible }) {
   let location = useLocation();
+  const translate = useLanguage();
 
   const { state: stateApp, appContextAction } = useAppContext();
   const { isNavMenuClose } = stateApp;
@@ -21,42 +29,61 @@ function Sidebar({ collapsible }) {
     {
       key: "customer",
       icon: <UserOutlined />,
-      label: <Link to={"/customer"}>Customer</Link>,
+      label: <Link to={"/customer"}>{translate("customer")}</Link>,
     },
     {
       key: "people",
       icon: <UserOutlined />,
-      label: <Link to={"/people"}>People</Link>,
+      label: <Link to={"/people"}>{translate("people")}</Link>,
     },
     {
       key: "company",
       icon: <ShopOutlined />,
-      label: <Link to={"/company"}>Company</Link>,
+      label: <Link to={"/company"}>{translate("company")}</Link>,
     },
     {
       key: "lead",
       icon: <ShopOutlined />,
-      label: <Link to={"/lead"}>Lead</Link>,
+      label: <Link to={"/lead"}>{translate("lead")}</Link>,
     },
     {
       key: "product",
       icon: <TagOutlined />,
-      label: <Link to={"/product"}>Product</Link>,
+      label: <Link to={"/product"}>{translate("product")}</Link>,
     },
     {
       key: "productcategory",
       icon: <TagsOutlined />,
-      label: <Link to={"/category/product"}>Product Category</Link>,
+      label: <Link to={"/category/product"}>{translate("product_category")}</Link>,
     },
     {
       key: "expense",
       icon: <TagsOutlined />,
-      label: <Link to={"/expense"}>Expense</Link>,
+      label: <Link to={"/expense"}>{translate("expense")}</Link>,
     },
     {
       key: "expenseCategory",
       icon: <TagsOutlined />,
-      label: <Link to={"/category/expense"}>Expense Category</Link>,
+      label: <Link to={"/category/expense"}>{translate("expense_category")}</Link>,
+    },
+    {
+      key: "settings",
+      icon: <SettingOutlined />,
+      label: translate('settings'),
+      children: [
+        {
+          key: "admin",
+          label: <Link to={"/admin"}>{translate("admin")}</Link>,
+        },
+        {
+          key: "generalSetting",
+          label: <Link to={"/settings"}>{translate("general_settings")}</Link>,
+        },
+        {
+          key: "paymentMode",
+          label: <Link to={"/payment/mode"}>{translate("payment_mode")}</Link>,
+        },
+      ],
     },
   ];
 
