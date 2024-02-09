@@ -77,6 +77,14 @@ const contextAction = (dispatch) => {
         dispatch({ type: crudConstant.CLOSE_MODAL });
       },
     },
+    advancedBox: {
+      open: () => {
+        dispatch({ type: crudConstant.OPEN_ADVANCED_BOX });
+      },
+      close: () => {
+        dispatch({ type: crudConstant.CLOSE_ADVANCED_BOX });
+      },
+    },
   };
 };
 

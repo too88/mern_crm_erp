@@ -64,6 +64,20 @@ export function contextReducer(state, action) {
         isReadBoxOpen: !state.isReadBoxOpen,
       };
 
+    // advanced box
+    case crudConstant.OPEN_ADVANCED_BOX:
+      return {
+        ...state,
+        isReadBoxOpen: false,
+        isEditBoxOpen: false,
+        isAdvancedBoxOpen: true,
+      };
+    case crudConstant.CLOSE_ADVANCED_BOX:
+      return {
+        ...state,
+        isAdvancedBoxOpen: false,
+      };
+
     // editBox
     case crudConstant.OPEN_EDIT_BOX:
       return {
