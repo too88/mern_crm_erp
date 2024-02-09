@@ -65,6 +65,14 @@ const request = {
       return console.log(error);
     }
   },
+  patch: async ({ entity, jsonData }) => {
+    try {
+      const response = await axios.patch(entity, jsonData);
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
 };
 
 export default request;
