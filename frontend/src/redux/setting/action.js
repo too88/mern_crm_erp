@@ -28,7 +28,7 @@ export const settingAction = {
       });
 
       let data = await request.patch({
-        entity: entity + "updateManySetting",
+        entity: entity + "/updateManySetting",
         jsonData,
       });
 
