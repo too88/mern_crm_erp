@@ -73,6 +73,15 @@ const request = {
       return console.log(error);
     }
   },
+  listAll: async ({ entity }) => {
+    try {
+      const response = await axios.get(entity + "/listAll");
+
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
 };
 
 export default request;
