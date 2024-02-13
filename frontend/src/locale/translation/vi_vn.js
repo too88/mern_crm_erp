@@ -65,6 +65,13 @@ const lang = {
   staff_cru: "Nhân viên (tạo, đọc, cập nhật)",
   create_and_read_only: "Tạo và chỉ đọc",
   read_only: "Chỉ đọc",
+  settings_list: "Danh sách cài đặt",
+  add_new_settings: "Thêm cài đặt mới",
+  general_setting: "Cài đặt chung",
+  app_settings: "Cài đặt ứng dụng",
+  update_your_company_information: "Cập nhật thông tin công ty của bạn",
+  application_name: "Tên ứng dụng",
+  language: "Ngôn ngữ",
 };
 
 export default lang;

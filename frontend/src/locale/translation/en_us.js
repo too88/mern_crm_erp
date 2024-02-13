@@ -60,12 +60,19 @@ const lang = {
   role: "Role",
   update_password: "Update Password",
   new_password: "New password",
-  admin_super_admin: "Siêu quản trị viên",
+  admin_super_admin: "Super admin",
   staff_admin_crud: "Staff (create, read, update, delete)",
   staff_cru: "Staff (create, read, update)",
   create_and_read_only: "Create and read",
   product: "Product",
   read_only: "Only read",
+  settings_list: "Settings List",
+  add_new_settings: "Add new setting",
+  general_setting: "General setting",
+  app_settings: "App setting",
+  update_your_company_information: "Update your company information",
+  application_name: "Application name",
+  language: "Ngôn ngữ",
 };
 
 export default lang;
