@@ -2,6 +2,7 @@ const createCRUDService = require("@/services/common");
 const CRUDSettingController = createCRUDService("Setting");
 
 const listAll = require("./listAll");
+const updateManySetting = require("./updateManySetting");
 
 const settingMethods = {
   read: CRUDSettingController.read,
@@ -11,6 +12,7 @@ const settingMethods = {
   filter: CRUDSettingController.filter,
   search: CRUDSettingController.search,
   listAll: listAll,
+  updateManySetting,
 };
 
 module.exports = settingMethods;

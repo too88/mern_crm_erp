@@ -13,4 +13,7 @@ router.route("/admin/list").get(adminController["list"]);
 // get method
 router.route("/setting/listAll").get(settingController.listAll);
 
+// update method
+router.route("/setting/updateManySetting").get(settingController.updateManySetting);
+
 module.exports = router;
