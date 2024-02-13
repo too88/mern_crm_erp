@@ -8,3 +8,8 @@ export const selectMoneyFormat = createSelector(
   [selectCurrentSetting],
   (setting) => setting.money_format_setting
 );
+
+export const selectAppSetting = createSelector(
+  [selectCurrentSetting],
+  (setting) => setting.app_settings
+);
