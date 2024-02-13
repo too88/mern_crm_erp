@@ -2,6 +2,8 @@ require("module-alias/register");
 require("dotenv").config({ path: ".env" });
 const connectionModule = require("@/setup/connection");
 const { generate: uniqueId } = require("shortid");
+const { globSync } = require("glob");
+const fs = require("fs");
 
 // connect database
 connectionModule.connection();
@@ -12,10 +14,12 @@ connectionModule.connection();
 // const People = require("@/models/app/People");
 const Admin = require("@/models/core/Admin");
 const AdminPassword = require("@/models/core/AdminPassword");
+const Setting = require("@/models/core/Setting");
 
 async function execute() {
   try {
     await generateSuperAdmin();
+    await generateSettings();
     // await generateProductCategory();
     // await generateProduct();
     // await generateCompany();
@@ -51,6 +55,19 @@ async function generateSuperAdmin() {
   };
 
   await new AdminPassword(adminPasswordData).save();
+}
+
+async function generateSettings() {
+  const settingsFiles = globSync("./src/setup/defaultSettings/**/*.json");
+
+  const settingFileList = [];
+
+  for (const filePath of settingsFiles) {
+    const file = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    settingFileList.push(...file);
+  }
+
+  await Setting.insertMany(settingFileList);
 }
 
 // async function generateProductCategory() {
