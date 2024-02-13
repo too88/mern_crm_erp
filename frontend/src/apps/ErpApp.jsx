@@ -3,10 +3,18 @@ import Navigation from "@/apps/Navigation/index";
 import HeaderContent from "./Header";
 import AppRouter from "@/router/AppRouter";
 import { useAppContext } from "@/context/appContext";
+import { useDispatch } from "react-redux";
+import { useLayoutEffect } from "react";
+import { settingAction } from "@/redux/setting/action";
 
 export default function ErpApp() {
+  const dispatch = useDispatch();
   const { state: stateApp } = useAppContext();
   const { isNavMenuClose } = stateApp;
+
+  useLayoutEffect(() => {
+    dispatch(settingAction.list({ entity: "setting" }));
+  }, []);
 
   return (
     <Layout hasSider>
