@@ -1,6 +1,7 @@
 import * as settingConstant from "@/constants/common";
 
 const INITIAL_SETTING_STATE = {
+  company_settings: {},
   app_settings: {},
   money_format_setting: {
     currency: "VND",

@@ -72,6 +72,23 @@ const lang = {
   update_your_company_information: "Cập nhật thông tin công ty của bạn",
   application_name: "Tên ứng dụng",
   language: "Ngôn ngữ",
+  application_url: "URL ứng dụng",
+  application_email: "Email ứng dụng",
+  date_format: "Định dạng ngày",
+  allow_registration: "Cho phép đăng ký",
+  company_settings: "Cài đặt công ty",
+  multi_branch: "Nhiều chi nhánh",
+  company_name: "Tên công ty",
+  company_address: "Địa chỉ công ty",
+  company_state: "Tiểu bang công ty",
+  company_country: "Quốc gia công ty",
+  company_email: "Email công ty",
+  company_phone: "Số điện thoại công ty",
+  company_cell: "Di động công ty",
+  company_website: "Website công ty",
+  company_tax_number: "Mã số thuế công ty",
+  company_vat_number: "Mã số VAT công ty",
+  company_reg_number: "Mã số đăng ký công ty",
 };
 
 export default lang;

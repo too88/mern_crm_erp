@@ -73,6 +73,23 @@ const lang = {
   update_your_company_information: "Update your company information",
   application_name: "Application name",
   language: "Ngôn ngữ",
+  application_url: "Application URL",
+  application_email: "Application email",
+  date_format: "Date format",
+  allow_registration: "Allow registration",
+  company_settings: "Company setting",
+  company_name: "Company Name",
+  multi_branch: "Multi Branch",
+  company_address: "Company Address",
+  company_state: "Company State",
+  company_country: "Company Country",
+  company_email: "Company Email",
+  company_phone: "Company Phone",
+  company_cell: "Company Cell",
+  company_website: "Company Website",
+  company_tax_number: "Company Tax Number",
+  company_vat_number: "Company Vat Number",
+  company_reg_number: "Company Reg Number",
 };
 
 export default lang;
