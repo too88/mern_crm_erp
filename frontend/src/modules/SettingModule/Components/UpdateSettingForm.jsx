@@ -49,14 +49,6 @@ export default function UpdateSettingForm({ config, children }) {
               {translate("save")}
             </Button>
           </Form.Item>
-          <Form.Item
-            style={{
-              display: "inline-block",
-              paddingLeft: "5px",
-            }}
-          >
-            <Button onClick={() => console.log("cancel clicked")}>{translate("cancel")}</Button>
-          </Form.Item>
         </Form>
       </Loading>
     </div>
