@@ -4,11 +4,11 @@ import currency from "currency.js";
 import { useSelector } from "react-redux";
 
 const useMoney = () => {
-  const money_format_setting = useSelector(selectMoneyFormat);
+  const money_format_settings = useSelector(selectMoneyFormat);
 
-  const settingState = storePersist.get("setting")
-    ? storePersist.get("setting")
-    : { money_format_setting };
+  const settingState = storePersist.get("settings")
+    ? storePersist.get("settings")
+    : { money_format_settings };
 
   const {
     currency_symbol,
@@ -17,7 +17,7 @@ const useMoney = () => {
     thousand_sep,
     cent_precision,
     zero_format,
-  } = settingState.money_format_setting;
+  } = settingState.money_format_settings;
 
   function currencyFormat(amount) {
     return currency(amount).dollars() > 0

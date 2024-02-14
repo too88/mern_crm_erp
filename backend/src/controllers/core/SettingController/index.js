@@ -1,5 +1,5 @@
-const createCRUDService = require("@/services/common");
-const CRUDSettingController = createCRUDService("Setting");
+const createCRUDController = require("@/controllers/app/common");
+const CRUDSettingController = createCRUDController("Setting");
 
 const listAll = require("./listAll");
 const updateManySetting = require("./updateManySetting");

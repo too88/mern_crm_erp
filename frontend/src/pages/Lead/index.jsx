@@ -13,9 +13,10 @@ export default function Lead() {
     displayLabels: ["name"],
     searchFields: "name",
   };
+  
   const deleteModalLabels = ["name"];
 
-  const Labels = {
+  const labels = {
     PANEL_TITLE: translate("lead"),
     TABLE_NAME: translate("lead_list"),
     ADD_NEW_ENTITY: translate("add_new_lead"),
@@ -23,7 +24,7 @@ export default function Lead() {
   };
   const configPage = {
     entity,
-    ...Labels,
+    ...labels,
   };
   const config = {
     ...configPage,

@@ -6,7 +6,7 @@ export const selectCurrentSetting = createSelector([selectSetting], (setting) =>
 
 export const selectMoneyFormat = createSelector(
   [selectCurrentSetting],
-  (setting) => setting.money_format_setting
+  (setting) => setting.money_format_settings
 );
 
 export const selectAppSetting = createSelector(

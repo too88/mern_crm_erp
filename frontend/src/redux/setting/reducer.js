@@ -3,7 +3,7 @@ import * as settingConstant from "@/constants/common";
 const INITIAL_SETTING_STATE = {
   company_settings: {},
   app_settings: {},
-  money_format_setting: {
+  money_format_settings: {
     currency: "VND",
     currency_symbol: "đ",
     currency_position: "after",
