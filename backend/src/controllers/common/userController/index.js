@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const paginatedList = require("./paginatedList");
+const paginatedList = require("../../../services/common/user/paginatedList");
 
 const createUserController = (modelName) => {
   const Model = mongoose.model(modelName);

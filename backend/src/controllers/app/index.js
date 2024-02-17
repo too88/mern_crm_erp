@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const { allModelFileList } = require("@/utils");
 
-const paginatedList = require("../../services/common/paginatedList");
-const read = require("../../services/common/read");
-const create = require("../../services/common/create");
-const update = require("../../services/common/update");
-const remove = require("../../services/common/remove");
-const search = require("../../services/common/search");
+const paginatedList = require("../../services/core/paginatedList");
+const read = require("../../services/core/read");
+const create = require("../../services/core/create");
+const update = require("../../services/core/update");
+const remove = require("../../services/core/remove");
+const search = require("../../services/core/search");
 
 const createCRUDController = (modelName) => {
   if (!allModelFileList.includes(modelName)) {

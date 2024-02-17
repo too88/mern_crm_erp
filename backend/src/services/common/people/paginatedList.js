@@ -1,19 +1,21 @@
-require('module-alias/register');
-const constants = require('@/constants/common');
+require("module-alias/register");
+const constants = require("@/constants/common");
+const mongoose = require("mongoose");
+const People = mongoose.model("People");
 
-const paginatedList = async (Model, req, res) => {
+const paginatedList = async (req, res) => {
   const page = req.query.page || constants.PAGINATE_PAGE_DEFAULT;
   const limit = parseInt(req.query.items) || constants.PAGINATE_PAGESIZE;
   const skip = page * limit - limit;
 
-  const resultRef = Model.find({ removed: false })
+  const resultRef = People.find({ removed: false })
     .skip(skip)
     .limit(limit)
-    .sort({ created: 'desc' })
-    .populate()
+    .sort({ created: "desc" })
+    .populate('company', 'name')
     .exec();
 
-  const countRef = Model.countDocuments({ removed: false });
+  const countRef = People.countDocuments({ removed: false });
 
   const [result, count] = await Promise.all([resultRef, countRef]);
 
@@ -26,14 +28,14 @@ const paginatedList = async (Model, req, res) => {
       success: true,
       result,
       pagination,
-      message: 'success',
+      message: "success",
     });
   } else {
     return res.status(203).json({
       success: false,
       result: [],
       pagination,
-      message: 'failed',
+      message: "failed",
     });
   }
 };

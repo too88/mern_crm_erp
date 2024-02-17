@@ -6,7 +6,7 @@ const paginatedList = async (Model, req, res) => {
   const limit = parseInt(req.query.items) || constants.PAGINATE_PAGESIZE;
   const skip = page * limit - limit;
 
-  const resultRef = Model.find({ removed: false })
+  const resultRef = Model.find({ removed: false, enabled: true })
     .skip(skip)
     .limit(limit)
     .sort({ created: 'desc' })
