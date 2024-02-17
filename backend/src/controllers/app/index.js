@@ -1,39 +1,42 @@
-require("module-alias/register");
-const createCRUDController = require("@/controllers/app/common");
-const { routeList } = require("@/utils");
-const { globSync } = require("glob");
-const path = require("path");
+const mongoose = require("mongoose");
 
-const servicePath = "./src/controllers/app/common/*/";
-const serviceDirectories = globSync(servicePath).map((filePath) => {
-  return path.basename(filePath);
-});
+const { allModelFileList } = require("@/utils");
 
-const appController = () => {
-  const controllers = {};
-  const hasCustomControllers = [];
+const paginatedList = require("../../services/common/paginatedList");
+const read = require("../../services/common/read");
+const create = require("../../services/common/create");
+const update = require("../../services/common/update");
+const remove = require("../../services/common/remove");
+const search = require("../../services/common/search");
 
-  serviceDirectories.forEach((serviceName) => {
-    try {
-      const customService = require("@/controllers/app/common/" + serviceName);
+const createCRUDController = (modelName) => {
+  if (!allModelFileList.includes(modelName)) {
+    throw new Error(`Model ${modelName} does not exists`);
+  }
 
-      if (customService) {
-        hasCustomControllers.push(serviceName);
-        controllers[serviceName] = customService;
-      }
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  });
+  const Model = mongoose.model(modelName);
 
-  routeList.forEach(({ modelName, controllerName }) => {
-    if (!hasCustomControllers.includes(controllerName)) {
-      // service layer
-      controllers[controllerName] = createCRUDController(modelName);
-    }
-  });
+  const serviceList = {
+    read: (req, res) => read(Model, req, res),
+    list: (req, res) => paginatedList(Model, req, res),
+    create: async (req, res) => {
+      // FIXME: refactor this method
+      req.body.removed = false;
 
-  return controllers;
+      const resultRef = await new Model(req.body).save();
+
+      return res.status(200).json({
+        success: true,
+        result: resultRef,
+        message: "create successfully",
+      });
+    },
+    update: (req, res) => update(Model, req, res),
+    delete: (req, res) => remove(Model, req, res),
+    search: (req, res) => search(Model, req, res),
+  };
+
+  return serviceList;
 };
 
-module.exports = appController();
+module.exports = createCRUDController;

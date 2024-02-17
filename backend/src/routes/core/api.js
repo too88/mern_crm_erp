@@ -2,8 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-const adminController = require("@/controllers/core/AdminController");
-const settingController = require("@/controllers/core/SettingController");
+const adminController = require("@/controllers/common/adminController");
+const settingController = require("@/controllers/common/settingController");
 
 // ===================== ADMIN PROFILE =====================
 // get method
