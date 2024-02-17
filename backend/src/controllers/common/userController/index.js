@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const paginatedList = require("../../../services/common/user/paginatedList");
 
-const createUserController = (modelName) => {
-  const Model = mongoose.model(modelName);
+const createUserController = () => {
+  const Model = mongoose.model("Admin");
 
   const userServiceList = {
     list: (req, res) => paginatedList(Model, req, res),
@@ -12,4 +12,4 @@ const createUserController = (modelName) => {
   return userServiceList;
 };
 
-module.exports = createUserController;
+module.exports = createUserController();
