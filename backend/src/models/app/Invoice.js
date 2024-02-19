@@ -7,7 +7,7 @@ const invoiceSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   number: {
@@ -59,7 +59,7 @@ const invoiceSchema = new mongoose.Schema({
   content: String,
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   lead: {

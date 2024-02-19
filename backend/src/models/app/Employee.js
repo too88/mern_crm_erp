@@ -15,7 +15,7 @@ const employeeSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   firstname: {
     type: String,

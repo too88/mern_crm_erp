@@ -20,7 +20,7 @@ const offerSchema = new mongoose.Schema({
   content: String,
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   lead: {

@@ -32,11 +32,11 @@ const clientSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   assigned: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   created: {
     type: Date,

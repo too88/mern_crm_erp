@@ -67,7 +67,7 @@ const orderSchema = new mongoose.Schema({
   processString: String,
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   shipment: {
     type: mongoose.Schema.ObjectId,

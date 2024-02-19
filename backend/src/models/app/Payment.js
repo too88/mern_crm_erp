@@ -7,7 +7,7 @@ const paymentSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   number: {
@@ -42,7 +42,7 @@ const paymentSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   ref: {

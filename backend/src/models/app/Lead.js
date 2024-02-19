@@ -37,11 +37,11 @@ const leadSchema = new mongoose.Schema({
   ],
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   owner: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
   },
   subTotal: {
     type: Number,

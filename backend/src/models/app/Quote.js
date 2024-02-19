@@ -53,7 +53,7 @@ const quoteSchema = new mongoose.Schema({
   processString: String,
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: "Admin",
+    ref: "User",
     required: true,
   },
   taxRate: {
