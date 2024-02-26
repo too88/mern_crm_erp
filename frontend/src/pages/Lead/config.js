@@ -28,6 +28,7 @@ export const fields = {
       {
         value: "draft",
         label: "draft",
+        color: "gray",
       },
       {
         value: "new",
@@ -35,19 +36,50 @@ export const fields = {
         color: "blue",
       },
       {
-        value: "won",
-        label: "won",
+        value: "prospect",
+        label: "prospect",
         color: "green",
       },
       {
-        value: "loose",
-        label: "loose",
+        value: "open",
+        label: "open",
         color: "red",
       },
       {
-        value: "waiting",
-        label: "waiting",
+        value: "working",
+        label: "working",
         color: "orange",
+      },
+    ],
+  },
+  source: {
+    type: "selectWithTranslation",
+    renderAsTag: true,
+    options: [
+      {
+        value: "linkedIn",
+        label: "linkedIn",
+        color: "blue",
+      },
+      {
+        value: "twitter",
+        label: "twitter",
+        color: "cyan",
+      },
+      {
+        value: "website",
+        label: "website",
+        color: "gold",
+      },
+      {
+        value: "ads",
+        label: "ads",
+        color: "purple",
+      },
+      {
+        value: "sales",
+        label: "sales",
+        color: "magenta",
       },
     ],
   },
