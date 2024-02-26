@@ -9,7 +9,6 @@ const peopleSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  //TODO: feature activation people after register
   enabled: {
     type: Boolean,
     default: false,

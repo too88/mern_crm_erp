@@ -13,6 +13,10 @@ const remove = async (Model, req, res) => {
         removed: true,
       },
     },
+    // NOTE: new: true:
+    // tells Mongoose to return the modified document rather than the original document.
+    // runValidators: true:
+    // tells Mongoose to run any validators defined on the schema for this update operation.
     {
       new: true,
       runValidators: true,

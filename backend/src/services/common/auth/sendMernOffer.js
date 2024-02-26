@@ -20,7 +20,7 @@ const sendMernOffer = async ({ email, name }) => {
   const mailOption = {
     from: mern_app_email,
     to: email,
-    subject: subject,
+    subject: 'Are you want to customize this app or build your own SaaS?',
     html: afterRegistrationSuccess({ name }),
   };
 

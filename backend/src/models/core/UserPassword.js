@@ -46,4 +46,4 @@ adminPasswordSchema.methods.validPassword = function(salt, userPassword) {
   return bcrypt.compareSync(salt + userPassword, this.password)
 }
 
-module.exports = mongoose.model("AdminPassword", adminPasswordSchema);
+module.exports = mongoose.model("UserPassword", adminPasswordSchema);

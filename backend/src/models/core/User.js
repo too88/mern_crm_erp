@@ -7,7 +7,7 @@ const adminSchema = new mongoose.Schema({
   },
   enabled: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   email: {
     type: String,

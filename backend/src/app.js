@@ -8,7 +8,6 @@ const appApiRouter = require('@/routes/app/api');
 const coreApiRouter = require('@/routes/core/api');
 const authApiRouter = require('@/routes/auth/api');
 
-// subscribe express
 const app = express();
 
 app.use(
@@ -22,10 +21,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Here our API Routes
 app.use('/api', authApiRouter);
 app.use('/api', appApiRouter);
 app.use('/api', coreApiRouter);
 
-// export and start up the site in server.js
 module.exports = app;

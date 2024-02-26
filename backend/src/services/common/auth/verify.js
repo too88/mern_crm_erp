@@ -41,6 +41,7 @@ const verify = async (req, res) => {
     }
   );
 
+  // update email token when success access
   await UserPassword.findOneAndUpdate(
     {
       user: userId,
@@ -54,6 +55,7 @@ const verify = async (req, res) => {
     }
   ).exec();
 
+  // update enabled status after successfully verify
   const user = await User.findOneAndUpdate(
     {
       _id: userId,
@@ -87,7 +89,6 @@ const verify = async (req, res) => {
         surname: user.surname,
         role: user.role,
         email: user.email,
-        photo: user.photo,
       },
       message: "successfully logged",
     });

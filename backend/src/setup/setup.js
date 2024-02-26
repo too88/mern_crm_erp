@@ -12,8 +12,8 @@ connectionModule.connection();
 // const Product = require("@/models/app/Product");
 // const Company = require("@/models/app/Company");
 // const People = require("@/models/app/People");
-const Admin = require("@/models/core/Admin");
-const AdminPassword = require("@/models/core/AdminPassword");
+const User = require("@/models/core/User");
+const UserPassword = require("@/models/core/UserPassword");
 const Setting = require("@/models/core/Setting");
 
 async function execute() {
@@ -34,7 +34,7 @@ async function execute() {
 }
 
 async function generateSuperAdmin() {
-  const newAdminPassword = new AdminPassword();
+  const newAdminPassword = new UserPassword();
   const salt = uniqueId();
   const passwordHash = newAdminPassword.generateHash(salt, "admin@123");
 
@@ -45,7 +45,7 @@ async function generateSuperAdmin() {
     role: "superAdmin",
   };
 
-  const result = await new Admin(demoSuperAdmin).save();
+  const result = await new User(demoSuperAdmin).save();
 
   const adminPasswordData = {
     password: passwordHash,
@@ -54,7 +54,7 @@ async function generateSuperAdmin() {
     user: result._id,
   };
 
-  await new AdminPassword(adminPasswordData).save();
+  await new UserPassword(adminPasswordData).save();
 }
 
 async function generateSettings() {
