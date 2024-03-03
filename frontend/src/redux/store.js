@@ -16,7 +16,16 @@ const lang_state = storePersist.get("translate")
   ? storePersist.get("translate")
   : LANG_INITIAL_STATE;
 
-const initialState = { translate: lang_state };
+const AUTH_INITIAL_STATE = {
+  current: {},
+  isLoggedIn: false,
+  isLoading: false,
+  isSuccess: false,
+};
+
+const auth_state = storePersist.get('auth') ? storePersist.get('auth') : AUTH_INITIAL_STATE;
+
+const initialState = { translate: lang_state, auth: auth_state };
 
 const store = configureStore({
   reducer: rootReducer,
