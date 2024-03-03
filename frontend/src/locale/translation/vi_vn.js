@@ -122,6 +122,26 @@ const lang = {
   twitter: "Twitter",
   ads: "Quảng cáo",
   sales: "Sales",
+  manage_your_company_with: "Quản lý công ty của bạn với",
+  all_in_one_tool: "Công cụ tất cả trong một",
+  easily_add_and_manage_your_services: "Dễ dàng thêm và quản lý dịch vụ của bạn",
+  it_brings_together_your_invoice_clients_and_leads:
+    "Nó kết hợp khách hàng và khách hàng tiềm năng của bạn",
+  run_and_scale_your_erp_crm_apps: "Chạy và mở rộng ứng dụng ERP CRM của bạn",
+  password: "Mật khẩu",
+  remember_me: "Ghi nhớ tôi",
+  forgot_password: "Quên mật khẩu",
+  register_now: "Đăng ký ngay",
+  log_in: "Đăng nhập",
+  or: "Hoặc",
+  sign_in: "Đăng nhập",
+  confirm_password: "Xác nhận Mật khẩu",
+  already_have_account_login: "Đã có tài khoản, đăng nhập",
+  register: "Đăng ký",
+  verify_your_account: "Xác minh tài khoản của bạn",
+  complete_verification_by_providing_the_code_that_you_received_by_email:
+    "Hoàn tất xác minh bằng cách cung cấp mã bạn nhận được qua email",
+  verify_now: "Xác minh ngay",
 };
 
 export default lang;

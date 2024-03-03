@@ -124,6 +124,26 @@ const lang = {
   twitter: "Twitter",
   ads: "Advertising",
   sales: "Sales",
+  manage_your_company_with: "Manage Your Company With",
+  all_in_one_tool: "All In One Tool",
+  easily_add_and_manage_your_services: "Easily Add And Manage Your Services",
+  it_brings_together_your_invoice_clients_and_leads:
+    "It Brings Together Your Invoice Clients And Leads",
+  run_and_scale_your_erp_crm_apps: "Run And Scale Your Erp Crm Apps",
+  password: "Password",
+  remember_me: "Remember Me",
+  forgot_password: "Forgot Password",
+  register_now: "Register Now",
+  log_in: "Log In",
+  or: "Or",
+  sign_in: "Sign In",
+  confirm_password: "Confirm Password",
+  already_have_account_login: "Already Have Account Login",
+  register: "Register",
+  complete_verification_by_providing_the_code_that_you_received_by_email:
+    "Complete Verification By Providing The Code That You Received By Email",
+  verify_your_account: "Verify Your Account",
+  verify_now: "Verify Now",
 };
 
 export default lang;

@@ -1,4 +1,4 @@
-import AdminForm from "@/form/AdminForm";
+import AdminForm from "@/form/AuthForm/AdminForm";
 import useLanguage from "@/locale/useLanguage";
 import AdminCrudModule from "@/modules/AdminCrudModule";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";

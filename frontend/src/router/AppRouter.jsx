@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 
 const ProductCategory = lazy(() => import("@/pages/ProductCategory"));
 const ExpenseCategory = lazy(() => import("@/pages/ExpenseCategory"));
@@ -12,8 +12,23 @@ const Expense = lazy(() => import("@/pages/Expense"));
 const Admin = lazy(() => import("@/pages/Admin"));
 const Setting = lazy(() => import("@/pages/Settings/Setting"));
 
+const Verify = lazy(() => import("@/pages/Auth/Verify"));
+const Logout = lazy(() => import("@/pages/Auth/Logout"));
+
 export default function AppRouter() {
   const element = useRoutes([
+    {
+      path: '/login',
+      element: <Navigate to="/" />,
+    },
+    {
+      path: '/verify/*',
+      element: <Verify />,
+    },
+    {
+      path: '/logout',
+      element: <Logout />,
+    },
     {
       path: "/category/product",
       element: <ProductCategory />,
