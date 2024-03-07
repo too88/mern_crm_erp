@@ -15,6 +15,7 @@
     "antd-phone-input": "^0.3.3",
     "axios": "^1.6.2",
     "cross-env": "7.0.3",
+    "css-too": "^0.0.4",
     "currency.js": "2.0.4",
     "dayjs": "^1.11.10",
     "just-compare": "^2.3.0",
