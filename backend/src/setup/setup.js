@@ -41,6 +41,7 @@ async function generateSuperAdmin() {
   const demoSuperAdmin = {
     email: "admin@gmail.com",
     name: "admin",
+    surname: 'Admin',
     enabled: true,
     role: "superAdmin",
   };

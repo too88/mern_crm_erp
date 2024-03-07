@@ -5,7 +5,7 @@ const UserPassword = mongoose.model("UserPassword");
 const logout = async (req, res) => {
   const token = req.cookies.token;
   await UserPassword.findOneAndUpdate(
-    { user: req.admin._id },
+    { user: req.user._id },
     { $pull: { loggedSessions: token } },
     {
       new: true,

@@ -10,6 +10,6 @@ router.route("/verify/:userId/:emailToken").get(authController.verify);
 // post method
 router.route("/login").post(authController.login);
 router.route("/register").post(authController.register);
-router.route("/logout").post(authController.logout);
+router.route("/logout").post(authController.isValidAuthToken, authController.logout);
 
 module.exports = router;
